@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Componentes con Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-8">
+    <!-- Encabezado común -->
+    <header class="bg-blue-700 text-white p-6 rounded-lg shadow-lg mb-8 text-center">
+        <h1 class="text-4xl font-bold">Componentes con Tailwind CSS</h1>
+        <p class="mt-4 text-lg">Explora los componentes que puedes crear con Tailwind CSS.</p>
+    </header>
+
+    <!-- Menú de navegación común -->
+    <nav class="bg-gray-800 p-4 rounded-lg mb-8">
+        <ul class="flex justify-center space-x-8 text-white">
+            <li><a href="index.html" class="hover:text-blue-300">Inicio</a></li>
+            <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
+            <li><a href="interfaz.html" class="hover:text-blue-300">Interfaz</a></li>
+            <li><a href="componentes.html" class="hover:text-blue-300">Componentes</a></li>
+            <li><a href="colores.html" class="hover:text-blue-300">Colores</a></li>
+            <li><a href="dimensiones.html" class="hover:text-blue-300">Dimensiones</a></li>
+            <li><a href="propiedades.html" class="hover:text-blue-300">Propiedades</a></li>
+            <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal de la página de componentes -->
+    <main class="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <section>
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Introducción a los Componentes</h2>
+            <p class="text-gray-700 text-lg mb-4">
+                Tailwind CSS facilita la creación de componentes reutilizables. A continuación, se presentan algunos ejemplos de componentes comunes.
+            </p>
+        </section>
+
+        <!-- Componente de Botón -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">1. Componente de Botón</h2>
+            <div class="bg-gray-200 p-4 rounded-lg mb-4">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded">Botón</button>
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto mb-6">
+<code>&lt;button class="bg-blue-500 text-white px-4 py-2 rounded"&gt;Botón&lt;/button&gt;</code>
+            </pre>
+        </section>
+
+        <!-- Componente de Tarjeta -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">2. Componente de Tarjeta</h2>
+            <div class="bg-white shadow-lg rounded-lg p-6 mb-4">
+                <h3 class="text-2xl font-semibold mb-2">Título de la Tarjeta</h3>
+                <p class="text-gray-700 mb-4">Este es un ejemplo de contenido en una tarjeta con un poco de descripción.</p>
+                <button class="bg-blue-500 text-white px-4 py-2 rounded">Acción</button>
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto mb-6">
+<code>&lt;div class="bg-white shadow-lg rounded-lg p-6"&gt;
+    &lt;h3 class="text-2xl font-semibold mb-2"&gt;Título de la Tarjeta&lt;/h3&gt;
+    &lt;p class="text-gray-700 mb-4"&gt;Este es un ejemplo de contenido en una tarjeta con un poco de descripción.&lt;/p&gt;
+    &lt;button class="bg-blue-500 text-white px-4 py-2 rounded"&gt;Acción&lt;/button&gt;
+&lt;/div&gt;</code>
+            </pre>
+        </section>
+
+        <!-- Componente de Lista -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">3. Componente de Lista</h2>
+            <div class="bg-white shadow-lg rounded-lg p-4 mb-4">
+                <ul class="list-disc list-inside">
+                    <li class="text-gray-700">Elemento de la lista 1</li>
+                    <li class="text-gray-700">Elemento de la lista 2</li>
+                    <li class="text-gray-700">Elemento de la lista 3</li>
+                </ul>
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto mb-6">
+<code>&lt;div class="bg-white shadow-lg rounded-lg p-4"&gt;
+    &lt;ul class="list-disc list-inside"&gt;
+        &lt;li class="text-gray-700"&gt;Elemento de la lista 1&lt;/li&gt;
+        &lt;li class="text-gray-700"&gt;Elemento de la lista 2&lt;/li&gt;
+        &lt;li class="text-gray-700"&gt;Elemento de la lista 3&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code>
+            </pre>
+        </section>
+
+        <!-- Componente de Formulario -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">4. Componente de Formulario</h2>
+            <div class="bg-gray-200 p-6 rounded-lg mb-4">
+                <form>
+                    <label class="block mb-2" for="nombre">Nombre:</label>
+                    <input class="border border-gray-400 p-2 mb-4 w-full" type="text" id="nombre" name="nombre">
+                    <label class="block mb-2" for="email">Email:</label>
+                    <input class="border border-gray-400 p-2 mb-4 w-full" type="email" id="email" name="email">
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit">Enviar</button>
+                </form>
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto mb-6">
+<code>&lt;form&gt;
+    &lt;label class="block mb-2" for="nombre"&gt;Nombre:&lt;/label&gt;
+    &lt;input class="border border-gray-400 p-2 mb-4 w-full" type="text" id="nombre" name="nombre"&gt;
+    &lt;label class="block mb-2" for="email"&gt;Email:&lt;/label&gt;
+    &lt;input class="border border-gray-400 p-2 mb-4 w-full" type="email" id="email" name="email"&gt;
+    &lt;button class="bg-blue-500 text-white px-4 py-2 rounded" type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code>
+            </pre>
+        </section>
+    </main>
+
+     <!-- Pie de página común -->
+    <footer class="bg-gray-800 text-white p-4 rounded-lg mt-8 text-center">
+        <p class="text-sm">Guía de Tailwind CSS - Ing: Jose Germán Estrada Clavijo</p>
+    </footer>
+</body>
+
+</html>

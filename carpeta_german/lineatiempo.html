@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linea de Tiempo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            background-color: aliceblue;
+        }
+
+        header {
+            background-color: rgb(129, 81, 168);
+            height: 50px;
+            width: 100%;
+            display: flex;
+            text-align: center;
+            justify-content: right;
+            align-items: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        header .menu-btn {
+            background-color: rgb(129, 81, 168);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            margin-left: 10px;
+        }
+
+        header .logo {
+            margin-right: 10px;
+            border: 2px solid rgb(0, 0, 0);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-position: 10px;
+            img{
+                transform: scale(1);
+                border-radius: 50%;
+            }
+        }
+
+        div.menu {
+            position: relative;
+            right: 80%;
+        }
+
+        div.titulo {
+            position: relative;
+            right: 40%;
+        }
+
+        section {
+            background-color: rgb(0, 0, 0);
+            width: 100%;
+            display: flex;
+            margin-top: 50px;
+            height: calc(100vh - 125px);
+            overflow: auto;
+            /* Cambiar de hidden a auto */
+        }
+
+        aside {
+            background-color: rgb(109, 76, 136);
+            /* Fondo similar al article */
+            width: 230px;
+            height: calc(100vh - 145px);
+            /* Ajuste de altura del aside */
+            position: fixed;
+            top: 50px;
+            /* Espacio del header */
+            left: -250px;
+            transition: left 0.3s;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 20px;
+            /* Bordes redondeados como en el article */
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        aside.open {
+            left: 0;
+        }
+
+        article {
+            flex: 1;
+            background-color: rgb(109, 76, 136);
+            border-radius: 20px;
+            margin: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+            /* Sin scroll */
+        }
+
+        article>div {
+            display: none;
+        }
+
+        article>div.active {
+            display: block;
+        }
+
+        article>div.default {
+            display: block;
+        }
+
+        article.shift {
+            margin-left: 250px;
+        }
+
+        footer {
+            background-color: rgb(129, 81, 168);
+            width: 100%;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        div.tabla{
+            height: 750px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="menu">
+            <button class="menu-btn" aria-label="Toggle menu">☰</button>
+        </div>
+
+        <div class="titulo">Sistemas Operativos</div>
+        <div class="logo"><img src="/images/logo.png" alt=""></div>
+        <div class="nombre">
+            DaySay
+        </div>
+    </header>
+    <section>
+        <aside>
+            <div><a href="#section1">Apple</a></div>
+            <div><a href="#section2">Windows D.O.S</a></div>
+            <div><a href="#section3">Windows Home</a></div>
+            <div><a href="#section4">Windows Empresas</a></div>
+        </aside>
+        <article>
+            <div class="default">
+                <h1>Línea de Tiempo</h1>
+                <p>Selecciona una opción en el menú lateral para ver los detalles.</p>
+            </div>
+            <div id="section1">
+                <h1>Apple</h1>
+                <div class=" tabla overflow-y-scroll">
+                    <table class="border-collapse w-full border border-indigo-500 bg-white/80 text-sm shadow-sm">
+                        <thead class="bg-indigo-800">
+                            <tr>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Nombre</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Version (SO)</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Version Kernel</th>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Año
+                                    Lanzamiento</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Procesador</th>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Velocidad</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Arquetectura</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Número Hilos</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Tipo
+                                </th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Capacidad</th>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Frecuencia (Velocidad)</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Novedades Hadware</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Novedades Software</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Pantallazo Escritorio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple I</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No tenía un sistema operativo
+                                    como
+                                    los conocemos hoy; usaba una interfaz de línea de comandos básica.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1976</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MOS Technology 6502</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4 KB (expandible a 8 KB o 48 KB
+                                    con
+                                    tarjetas de expansión)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Incluía solo la placa base sin
+                                    carcasa, teclado o monitor; los usuarios tenían que añadir estos componentes.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Venía con un intérprete de
+                                    BASIC en
+                                    cinta.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No contaba con interfaz
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple II</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No tenía un sistema operativo
+                                    como
+                                    los conocemos hoy; inicialmente se usaba el monitor ROM y luego se desarrollaron
+                                    varios
+                                    sistemas operativos, incluidos Apple DOS y ProDOS</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1977</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MOS Technology 6502</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4 KB (expandible a 8 KB o 48 KB
+                                    con
+                                    tarjetas de expansión)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">"Primera computadora personal
+                                    en
+                                    color.
+                                    Expansión de ranuras (7 ranuras de expansión).
+                                    Carcasa de plástico integrada con teclado."</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">"Soporte para gráficos a color
+                                    y
+                                    sonido.
+                                    Soporte para BASIC (lenguaje de programación).
+                                    Primeros programas de hoja de cálculo (VisiCalc) y juegos (e.g., ""Oregon Trail"")."
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image1.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple II Plus</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No tenía un sistema operativo
+                                    formal, pero se utilizaba AppleSoft BASIC.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1979</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MOS 6502</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 KB (expandible a 64 KB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora en la capacidad de RAM y
+                                    soporte para discos de 5.25 pulgadas.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Incluía AppleSoft BASIC, que
+                                    permitía el uso de gráficos en color y sonido.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image2.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple III</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple SOS (Sophisticated
+                                    Operating
+                                    System)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1980</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple SOS (Sophisticated
+                                    Operating
+                                    System)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">128 KB (expandible a 512 KB)
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">"Carcasa de metal para
+                                    disipación
+                                    de calor.
+                                    Teclado incorporado y teclado numérico.
+                                    Unidad de disquete integrada de 5,25 pulgadas.
+                                    Soporte para texto en 80 columnas.
+                                    Soporte para gráficos de alta resolución (560x192 píxeles)."</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">"Apple SOS, un sistema
+                                    operativo
+                                    avanzado para su tiempo con características como manejo de archivos jerárquico.
+                                    Compatibilidad limitada con software del Apple II.
+                                    Aplicaciones empresariales como hojas de cálculo y bases de datos."</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image3.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple IIe</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No tenía un sistema operativo
+                                    formal, pero se utilizaba AppleSoft BASIC.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1983</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MOS 6502</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">64 KB (expandible a 128 KB)
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora en la capacidad de RAM y
+                                    expansión de los puertos, diseño más robusto.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"> Mejoras en la compatibilidad
+                                    de
+                                    software y hardware.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image4.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple Lisa</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Lisa OS</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1983</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Motorola 68000</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">5 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 MB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Primer computador personal con
+                                    interfaz gráfica de usuario (GUI) y ratón.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de la interfaz
+                                    gráfica
+                                    de usuario con ventanas y iconos, Lisa Office System.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image5.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple IIc</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No tenía un sistema operativo
+                                    formal, pero se utilizaba AppleSoft BASIC.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1984</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MOS 6502</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">128 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Diseño más compacto y portátil
+                                    en
+                                    comparación con el Apple IIe, con una unidad de disco interna.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Compatibilidad con el software
+                                    de
+                                    Apple II y nuevas características de portabilidad.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image6.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple Macintosh 128K</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">System Software 1.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1984</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Motorola 68000</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">128 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de la interfaz
+                                    gráfica
+                                    de usuario con ratón, diseño compacto todo-en-uno.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Primer Macintosh con System
+                                    Software, aplicaciones gráficas e interfaz intuitiva.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image7.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple IIgs</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">ProDOS 8 (Apple IIgs), GS/OS
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1986</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">WDC 65C816</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2.8 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">256 KB (expandible a 8 MB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en el rendimiento con
+                                    un
+                                    procesador de 16-bit, gráficos mejorados y sonido</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de GS/OS, un
+                                    sistema
+                                    operativo con una interfaz gráfica mejorada para la línea Apple II.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image8.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Macintosh SE</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">System Software 6.0.8</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1987</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Motorola 68000</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 MB (expandible a 4 MB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Diseño compacto y modular,
+                                    introducción de una segunda bahía para discos duros internos.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora del System Software,
+                                    introducción de nuevas utilidades y capacidades de hardware.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image9.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple Macintosh Plus</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">System Software 4.0.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1986</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Motorola 68000</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 MB (expandible a 4 MB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mayor capacidad de RAM y disco
+                                    duro
+                                    interno de 3.5 pulgadas.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de mejoras en el
+                                    sistema operativo y el soporte para nuevas aplicaciones.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image10.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Macintosh II</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">System Software 4.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1987</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"> Motorola 68020</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MB (expandible a 32 MB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Procesador más rápido, mejor
+                                    rendimiento gráfico y de cálculo, diseño avanzado para su época.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la gestión de
+                                    memoria y
+                                    rendimiento del sistema operativo</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image11.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple Macintosh Portable</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">System Software 6.0.5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1989</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"> Motorola 68000</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 MB (expandible a 32 MB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Primera computadora portátil de
+                                    Apple con una pantalla LCD, diseño robusto para portabilidad.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Compatible con System Software
+                                    de
+                                    Macintosh, mejoras en software de administración de energía.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image12.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple Macintosh LC</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">System Software 7.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1990</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Motorola 68030</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2 MB (expandible a 32 MB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Sistema compacto y asequible
+                                    con
+                                    capacidad de expansión y opciones de actualización.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora en la interfaz de
+                                    usuario y
+                                    soporte para aplicaciones nuevas.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image13.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple Macintosh IIfx</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">System Software 6.0.7</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1990</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Motorola 68030</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">40 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MB (expandible a 32 MB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Procesador más rápido, mejor
+                                    rendimiento gráfico y de cálculo, diseño avanzado para su época.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la gestión de
+                                    memoria y
+                                    rendimiento del sistema operativo.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image14.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple Macintosh Quadra 700</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">System Software 7.0.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1991</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Motorola 68040</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">25 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MB (expandible a 68 MB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Avanzado rendimiento gráfico y
+                                    de
+                                    procesamiento, diseño modular con expansión de memoria.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de System Software
+                                    7.0, que trajo mejoras significativas en la interfaz gráfica y el soporte para
+                                    redes.
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image15.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Macintosh Color Classic</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">System Software 7.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1993</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Motorola 68030</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4 MB (expandible a 10 MB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Pantalla a color, diseño
+                                    compacto y
+                                    atractivo para el hogar.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora en el soporte para
+                                    gráficos
+                                    y multimedia.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image16.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple Macintosh PowerBook 500
+                                    Series</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS 7.5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1994</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">PowerPC 603e</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">100 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MB (expandible a 64 MB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Diseño portátil, pantalla LCD
+                                    de
+                                    10.4 pulgadas, batería recargable.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Soporte para Mac OS 7.5,
+                                    mejoras en
+                                    la administración de energía.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image17.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple Power Macintosh 6100</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS 7.5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1994</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">PowerPC 603</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">60 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MB (expandible a 64 MB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Primer Macintosh con procesador
+                                    PowerPC, soporte para PCI.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS 7.5 con mejoras en la
+                                    interfaz y compatibilidad.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image18.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple Power Macintosh 7100</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS 7.5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1994</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">PowerPC 603</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">66 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MB (expandible a 136 MB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora en el rendimiento
+                                    gráfico y
+                                    de procesamiento.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de Mac OS 7.5.
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image19.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple Power Macintosh 8100</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"> Mac OS 7.5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1994</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">PowerPC 601</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">80 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MB (expandible a 136 MB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Alto rendimiento para tareas de
+                                    multimedia y gráficos.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS 7.5 con nuevas
+                                    características.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image20.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple PowerBook 5300</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"> Mac OS 7.5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1995</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">PowerPC 603e</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">100 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MB (expandible a 64 MB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">No especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Pantalla colorida de 10.4
+                                    pulgadas,
+                                    diseño ligero y portátil.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Soporte para Mac OS 7.5,
+                                    mejoras en
+                                    la funcionalidad de portabilidad.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image21.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple Power Macintosh G3</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"> Mac OS 8</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1997</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">PowerPC G3</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">233 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 MB (expandible a 1 GB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">66 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción del procesador G3
+                                    con
+                                    mejoras significativas en el rendimiento.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS 8.0 con nuevas
+                                    características de interfaz y estabilidad</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image22.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple PowerBook G3</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS 8.6</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1998</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">PowerPC G3</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">250 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">64 MB (expandible a 192 MB)
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">66 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Diseño compacto y ligero con
+                                    mejor
+                                    rendimiento de batería.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS 8.6 con mejoras en la
+                                    estabilidad y el rendimiento.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image23.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple PowerBook G4</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS 9.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1999</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">PowerPC G4</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">450 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">64 MB (expandible a 1 GB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">100 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción del procesador G4
+                                    con
+                                    mejoras en el rendimiento gráfico y de cálculo.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS 9.0 con mejoras en la
+                                    interfaz de usuario y estabilidad.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image24.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple iMac G3</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS 8.5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1999</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">PowerPC G3</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">233 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 MB (expandible a 128 MB)
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">66 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Diseño todo-en-uno con pantalla
+                                    CRT
+                                    y carcasa colorida.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS 8.5 con nuevas
+                                    características y mejoras en la usabilidad.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image25.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple iMac G4</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS X 10.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">XNU</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2002</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">PowerPC G4</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">700 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DDR SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">128 MB (expandible a 1 GB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">133 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Diseño innovador con pantalla
+                                    LCD
+                                    montada en un brazo ajustable.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS X 10.1, introducción de
+                                    la
+                                    interfaz Aqua y nuevas</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image26.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple iMac G5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS X 10.4</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">XNU</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2004</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">PowerPC G5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1.6 GHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">64 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DDR SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">256 MB (expandible a 2 GB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">400 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Procesador G5 con soporte de
+                                    64-bit, diseño todo-en-uno con pantalla LCD de 17 o 20 pulgadas.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS X 10.4 Tiger,
+                                    introducción
+                                    de nuevas características como Spotlight.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image27.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"> iMac Intel Core Duo</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS X 10.4</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">XNU</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2006</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Core Duo</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1.83 GHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">64 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DDR2 SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">512 MB (expandible a 2 GB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">667 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Transición a procesadores
+                                    Intel,
+                                    mejora en el rendimiento y la compatibilidad con software.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Transición a procesadores
+                                    Intel,
+                                    mejora en el rendimiento y la compatibilidad con software.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image28.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">iMac (Aluminum)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS X 10.5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">XNU</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2009</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Core 2 Duo</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2.66 GHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">64 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DDR3 SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4 GB (expandible a 16 GB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1066 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Diseño en aluminio, pantalla de
+                                    21.5 o 27 pulgadas, más opciones de conectividad.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mac OS X 10.5 Leopard con
+                                    nuevas
+                                    características y mejor rendimiento.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image29.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">iMac Retina 5K</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">OS X Yosemite</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">XNU</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2014</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Core I5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.5 GHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">64 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DDR3 SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 GB (expandible a 32 GB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1600 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Pantalla Retina 5K con
+                                    resolución
+                                    de 5120 x 2880 píxeles, diseño delgado y elegante.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Pantalla Retina 5K con
+                                    resolución
+                                    de 5120 x 2880 píxeles, diseño delgado y elegante.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image30.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">iMac 24" (M1)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">macOS Big Sur</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">XNU</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2021</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple M1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.2 GHz (base)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">ARM64</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 (4 de alto rendimiento y 4 de
+                                    alta eficiencia)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Unified Memory</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 GB (expandible a 16 GB)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">no especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Diseño delgado, pantalla Retina
+                                    4.5K, procesador Apple M1 con arquitectura ARM.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">macOS Big Sur con soporte para
+                                    el
+                                    nuevo hardware M1 y nuevas características de interfaz.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image31.png"></td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple Mac Studio</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">macOS Monterey</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">XNU</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2022</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Apple M1 Ultra</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Hasta 3.8 GHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">ARM64</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">20 (16 de alto rendimiento y 4
+                                    de
+                                    alta eficiencia)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Unified Memory</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 GB (expandible a 128 GB)
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">no especificada</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Rendimiento extremo con el M1
+                                    Ultra, múltiples opciones de conectividad, diseño compacto.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">macOS Monterey con soporte para
+                                    el
+                                    hardware M1 Ultra y nuevas capacidades de software.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="images/image32.png"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="section2">
+                <h1>Windows D.O.S</h1>
+                <!-- Contenido de la sección Windows D.O.S -->
+                <div class=" tabla overflow-y-scroll">
+                    <table class="border-collapse w-full border border-indigo-500 bg-white/80 text-sm shadow-sm">
+                        <thead class="bg-indigo-800">
+                            <tr>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Nombre</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Version (SO)</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Version Kernel</th>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">Año
+                                    Lanzamiento</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Procesador</th>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Velocidad</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Arquetectura</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Número Hilos</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">Tipo
+                                </th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Capacidad</th>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Frecuencia (Velocidad)</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Novedades Hadware</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Novedades Software</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Pantallazo Escritorio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 1.x</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1.x</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1981</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 8088</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">64 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Primera versión para PC compatibles
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Soporte básico para discos duros y
+                                    disquetes</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos2.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 2.x</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2.x</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1983</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 8088/8086</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">64 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Soporte para discos duros y
+                                    estructuras de directorios</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de directorios y
+                                    mejoras en la gestión de archivos</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos3.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 3.x</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.x</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1984</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 8088/8086</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz (8088), 8 MHz (80286 en
+                                    versiones más recientes)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">128 KB - 256 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora en la compatibilidad con
+                                    discos duros más grandes</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en el manejo de discos y
+                                    soporte para redes básicas</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos4.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 3.00</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.00</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1984</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 8088/8086</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz (8088), 8 MHz (80286 en
+                                    versiones más recientes)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">128 KB - 256 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora en la compatibilidad con
+                                    discos duros más grandes</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en el manejo de discos y
+                                    soporte para redes básicas</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos5.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 3.10</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.10</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.10</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1985</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 8088/8086</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz (8088), 8 MHz (80286 en
+                                    versiones más recientes)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">128 KB - 256 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en el soporte de hardware y
+                                    discos</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la administración de
+                                    discos y compatibilidad de hardware</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos6.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 3.20</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.20</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.20</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1986</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 8088/8086</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz (8088), 8 MHz (80286 en
+                                    versiones más recientes)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">128 KB - 256 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la administración de
+                                    discos y compatibilidad de hardware</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en el soporte de redes y
+                                    herramientas de administración</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos7.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 3.21</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.21</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.21</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1988</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 8088/8086</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz (8088), 8 MHz (80286 en
+                                    versiones más recientes)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">128 KB - 256 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la administración de
+                                    discos y soporte de hardware</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en las herramientas de
+                                    administración de discos</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos8.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 3.30</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.30</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.30</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1989</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 8088/8086</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz (8088), 8 MHz (80286 en
+                                    versiones más recientes)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">128 KB - 256 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la administración de
+                                    discos y soporte de hardware</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en las herramientas de
+                                    administración de discos</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos9.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 4.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1988</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 80286/80386</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MHz o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">256 KB - 512 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MHz - 12 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Soporte para procesadores 80286 y
+                                    80386, mayor memoria</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de la gestión de
+                                    memoria extendida</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos10.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 5.x</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">5.x</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">5.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1991</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 80386</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">10 MHz o superior (80286), 16 MHz o
+                                    superior (80386)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">512 KB - 640 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">10 MHz - 16 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en el soporte para hardware
+                                    avanzado</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Inclusión de editores de texto y
+                                    mejoras en la interfaz de línea de comandos</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos11.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 6.x</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.x</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1993</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 80386 y superiores</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">640 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz - 33 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en el soporte de hardware
+                                    moderno</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora en el manejo de archivos y
+                                    herramientas de administración</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos12.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 6.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1993</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 80386 y superiores</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">640 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz - 33 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en el soporte de hardware
+                                    moderno</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora en el manejo de archivos y
+                                    herramientas de administración</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos13.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 6.20</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.20</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.20</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1994</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 80386 y superiores</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">640 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz - 33 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en el soporte de hardware
+                                    moderno</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la administración de
+                                    archivos y herramientas de diagnóstico</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos14.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 6.21</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.21</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.21</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1994</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 80386 y superiores</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">640 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz - 33 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en el soporte de hardware
+                                    moderno</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la administración de
+                                    archivos y herramientas de diagnóstico</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos15.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 6.22</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.22</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.22</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1994</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 80386 y superiores</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">640 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz - 33 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en el soporte de hardware
+                                    moderno</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la administración de
+                                    archivos y herramientas de diagnóstico</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos16.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 700</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">7.x</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">7.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1995</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 80486, Pentium</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">20 MHz o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4 MB (megabytes) o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">66 MHz - 200 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Integración con Windows 95, soporte
+                                    para hardware más moderno</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de Windows 95, mejoras
+                                    en la administración de archivos y redes</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos17.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">MS-DOS 8.x</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8.x</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2000</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Pentium y superiores</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">66 MHz o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MB (megabytes) o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz - 33 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Integración con Windows ME, soporte
+                                    para hardware avanzado</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la administración del
+                                    sistema, integración con Windows ME</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos18.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">9.1 MS-DOS 4.0 (multitasking) and
+                                    MS-DOS 4.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.0/4.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.0/4.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1988/1989</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 80286/80386</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MHz o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">512 KB - 1 MB (megabyte)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">20 MHz - 66 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Soporte para procesadores 80286 y
+                                    80386, mayor memoria</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de la gestión de
+                                    memoria extendida, soporte básico para multitasking</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos19.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">9.2 MS-DOS Mobile 1.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2002</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">ARM, otros móviles</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">20-33 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">ARM/x86</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4 MB - 8 MB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">66 MHz - 200 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Soporte para hardware móvil, menor
+                                    uso de recursos</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Adaptación para entornos móviles,
+                                    herramientas específicas para dispositivos móviles</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/dos20.png">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="section3">
+                <h1>Windows Home</h1>
+                <!-- Contenido de la sección Windows Home -->
+                <div class=" tabla overflow-y-scroll">
+
+                    <table class="border-collapse w-full border border-indigo-500 bg-white/80 text-sm shadow-sm">
+                        <thead class="bg-indigo-800">
+                            <tr>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Nombre</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Version (SO)</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Version Kernel</th>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">Año
+                                    Lanzamiento</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Procesador</th>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Velocidad</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Arquetectura</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Número Hilos</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">Tipo
+                                </th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Capacidad</th>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Frecuencia (Velocidad)</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Novedades Hadware</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Novedades Software</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Pantallazo Escritorio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 1.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1985</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 8088</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">256 KB</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Primera versión de Windows,
+                                    compatible con PC XT.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Interfaz gráfica básica con
+                                    multitarea cooperativa.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home1.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 2.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1987</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"> Intel 8088/8086</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.77 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">640 KB o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejor soporte para hardware de PC
+                                    AT.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Soporte para ventanas superpuestas
+                                    y mejoras en la administración de memoria.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home2.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 3.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1990</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 80286/80386</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">12-20 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 MB o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de soporte para el
+                                    procesador 80386.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la interfaz gráfica,
+                                    multitarea cooperativa, y soporte para 256 colores.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home3.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 3.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1992</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 80386 o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">12-33 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2 MB o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la compatibilidad con
+                                    hardware.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de TrueType fonts y
+                                    soporte mejorado para multimedia.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home4.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 95</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1996</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Pentium o compatible</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">66 MHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4 MB o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de soporte Plug and
+                                    Play.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Interfaz gráfica de usuario
+                                    completamente rediseñada, introducción del menú de inicio y la barra de tareas.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home5.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 98</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1998</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Pentium o compatible</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"> 66 MHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">8 MB o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en soporte para hardware
+                                    USB.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la estabilidad y soporte
+                                    de hardware, introducción de Internet Explorer 4.0.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home6.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows ME</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.9</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4.9</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2000</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Pentium o compatible</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">66 MHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MB o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora en soporte de hardware
+                                    multimedia.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Integración con Windows Media
+                                    Player y nuevas herramientas de recuperación del sistema.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home7.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 2000</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2000</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Pentium II o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">233 MHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">64 MB o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de soporte para
+                                    múltiples procesadores.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la estabilidad y
+                                    seguridad, introducción de Active Directory y soporte para sistemas de archivos NTFS.
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home8.png">
+                                </td>
+                            </tr>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows XP</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">5.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">5.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2001</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Pentium III o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">233 MHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DDR SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">128 MB o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora en la compatibilidad con
+                                    hardware moderno y soporte para DirectX 8.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Interfaz gráfica de usuario
+                                    moderna, soporte para múltiples usuarios y mejoras en la estabilidad.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home9.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows Vista</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2007</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Pentium 4 o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32/64 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DDR2 SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">512 MB o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">533-800 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Introducción de soporte para Aero
+                                    Glass.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Interfaz gráfica Aero, mejoras en
+                                    la seguridad con UAC (Control de Cuentas de Usuario)</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home10.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 7</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2009</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Core 2 o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32/64 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DDR3 SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GB (32-bit) o 2 GB (64-bit) o más
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">800-1333 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora en el soporte de hardware y
+                                    eficiencia energética.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Interfaz de usuario refinada,
+                                    mejoras en el rendimiento y compatibilidad con aplicaciones.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home11.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 8</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2012</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Core i3 o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32/64 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DDR3 SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GB (32-bit) o 2 GB (64-bit) o más
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1333 MHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Optimización para dispositivos con
+                                    pantallas táctiles.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Interfaz Metro, integración con la
+                                    tienda de aplicaciones Windows Store.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home12.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 8.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.3</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.3</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2013</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Core i3 o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32/64 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DDR3 SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GB (32-bit) o 2 GB (64-bit) o más
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1333 MHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en soporte de hardware y
+                                    optimización.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en la interfaz, nuevas
+                                    opciones de personalización y funcionalidad mejorada de búsqueda.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home13.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 10</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">10</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">10</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2015</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Core i3 o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32/64 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DDR3/DDR4 SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GB (32-bit) o 2 GB (64-bit) o más
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1600 MHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Soporte para DirectX 12, mejoras en
+                                    la compatibilidad con hardware moderno.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"> Interfaz de usuario combinada con
+                                    el menú de inicio, Cortana, Microsoft Edge, y actualizaciones constantes como parte del
+                                    modelo Windows as a Service.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home14.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 11</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">10</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">10</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2021</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Core i5 de 8ª generación o
+                                    AMD Ryzen 5 2000 o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32/64 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">N/A</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">DDR4 SDRAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4 GB o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2133 MHz o más</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Nuevos requisitos de hardware como
+                                    TPM 2.0 y UEFI con Secure Boot.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Rediseño de la interfaz de usuario,
+                                    soporte mejorado para aplicaciones, widgets, integración con Microsoft Teams y mejoras
+                                    en la productividad.</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/home15.png">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="section4">
+                <h1>Windows Empresas</h1>
+                <!-- Contenido de la sección Windows Empresas -->
+                <div class=" tabla overflow-y-scroll">
+
+                    <table class="border-collapse w-full border border-indigo-500 bg-white/80 text-sm shadow-sm">
+                        <thead class="bg-indigo-800">
+                            <tr>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Nombre</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Version (SO)</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Version Kernel</th>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">Año
+                                    Lanzamiento</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Procesador</th>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Velocidad</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Arquetectura</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Número Hilos</th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">Tipo
+                                </th>
+                                <th class="w-1/8 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Capacidad</th>
+                                <th class="w-1/12 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Frecuencia (Velocidad)</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Novedades Hadware</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Novedades Software</th>
+                                <th class="w-1/4 border border-indigo-500 font-semibold p-4 text-indigo-200 text-left">
+                                    Pantallazo Escritorio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows NT 3.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">NT 3.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1993</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 80386</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">20 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Servidor</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4 MB RAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">20 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Soporte inicial para redes</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Interfaz gráfica basada en Program
+                                    Manager</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/empre1.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows NT 3.5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">3.5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">NT 3.5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1994</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 80386 o superior</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">25 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Servidor</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">16 MB RAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">25 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en rendimiento y redes</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Compatibilidad mejorada con redes
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/empre2.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows NT 4.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">4</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">NT 4.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1996</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel 80386</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">33 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Servidor</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 MB RAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">33 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Interfaz gráfica de Windows 95</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Estabilidad mejorada, interfaz
+                                    gráfica similar a Windows 95</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/empre3.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 2000</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">5</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">NT 5.0</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2000</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Pentium II</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">233 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Servidor</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">64 MB RAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">233 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora en soporte para hardware y
+                                    dispositivos</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Active Directory, NTFS 3.0, Windows
+                                    File Protection</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/empre4.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows XP Professional</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">5.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">NT 5.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2001</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Pentium III</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">300 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1-2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Profesional</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">128 MB RAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">300 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejora en rendimiento y estabilidad
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Nueva interfaz gráfica, Remote
+                                    Desktop</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/empre5.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows Server 2003</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">5.2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">NT 5.2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2003</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Pentium III</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">550 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Servidor</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">256 MB RAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">550 MHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en escalabilidad y
+                                    rendimiento</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">IIS 6.0, Active Directory mejorado
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/empre6.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows Vista Business</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">NT 6</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2007</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Pentium 4</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32/64 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1-2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Profesional</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">512 MB RAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Nuevas capacidades multimedia y de
+                                    seguridad</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Aero, UAC, Windows Search</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/empre7.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 7 Professional</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">NT 6.1</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2009</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Pentium 4</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32/64 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1-2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Profesional</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GB RAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en rendimiento y
+                                    compatibilidad</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en interfaz de usuario,
+                                    soporte de touch</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/empre8.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 8 Pro</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">6.2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">NT 6.2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2012</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Pentium 4</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32/64 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1-2</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Profesional</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2 GB RAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Interfaz Metro, mayor integración
+                                    con la nube</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows Store, mejoras en seguridad
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/empre9.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Windows 10 Pro</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">10</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">NT 10</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2015</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Intel Core i3</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">32/64 bits</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2-4</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Profesional</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">2 GB RAM</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">1 GHz</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Continuum, mayor seguridad y productividad</td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800">Cortana, nuevo menú de inicio, Edge
+                                </td>
+                                <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/empre10.png">
+                                </td>
+                            </tr>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Windows Server 2016</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">10</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">NT 10.0</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">2016</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Intel Xeon</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">1.4 GHz</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">64 bits</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">4-8</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Servidor</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">512 MB RAM</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">1.4 GHz</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Soporte para contenedores</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Nano Server, Windows Containers</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/empre11.png">
+                            </td>
+                            </tr>
+                            </tr>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Windows Server 2019</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">10</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">NT 10.0</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">2018</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Intel Xeon</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">1.4 GHz</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">64 bits</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">4-8</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Servidor</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">512 MB RAM</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">1.4 GHz</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Mejoras en seguridad y rendimiento</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Windows Admin Center, integración con
+                                Azure</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/empre12.png">
+                            </td>
+                            </tr>
+                            </tr>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Windows 11 Pro</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">10</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">NT 10.0</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">2021</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Intel Core i5</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">1.4 GHz</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">64 bits</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">4-8</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Profesional</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">4 GB RAM</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">1.4 GHz</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Nueva interfaz de usuario, mejoras en
+                                multitarea</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800">Soporte para aplicaciones Android, Snap
+                                Layouts</td>
+                            <td class="border border-indigo-500 p-4 text-indigo-800"><img src="/images/empre13.png">
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </article>
+    </section>
+    <footer>
+        <div>Daniel Estiven Arboleda Duque</div>
+        <div>
+            14/08/2024
+        </div>
+    </footer>
+    <script>
+        document.querySelector('.menu-btn').addEventListener('click', function () {
+            const aside = document.querySelector('aside');
+            const article = document.querySelector('article');
+
+            aside.classList.toggle('open');
+            article.classList.toggle('shift');
+        });
+
+        // Manejo del cambio de sección en el artículo basado en el enlace del aside
+        document.querySelectorAll('aside a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                // Ocultar el contenido por defecto
+                document.querySelector('.default').style.display = 'none';
+                // Mostrar la sección correspondiente
+                document.querySelectorAll('article > div').forEach(section => {
+                    section.style.display = 'none';
+                });
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                }
+            });
+        });
+
+        // Mostrar la sección por defecto y ocultar el mensaje de línea de tiempo
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('.default').style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>

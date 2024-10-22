@@ -1,0 +1,685 @@
+670956b23e36f,"¿Qué es un CRUD?","Primero, hay que entender qué significa CRUD. CRUD es un conjunto de operaciones básicas que podemos hacer sobre los datos:
+
+Create (Crear): Añadir un nuevo registro.
+Read (Leer): Mostrar o listar los datos existentes.
+Update (Actualizar): Editar o modificar un dato ya existente.
+Delete (Eliminar): Borrar un registro.",,,1
+670956da218f9,"¿Cómo funciona nuestro sistema con CSV?","Normalmente, los CRUD trabajan con bases de datos como MySQL, pero en este caso vamos a usar un archivo CSV.
+
+Un archivo CSV es como una hoja de cálculo donde los datos están separados por comas. Cada línea del archivo es un registro, y cada columna es un dato diferente de ese registro (por ejemplo: nombre, apellido, edad, correo, teléfono).",,,1
+67095716265da,"Estructura del proyecto","Aquí es donde empezamos a organizar el sistema. Vamos a tener varios archivos PHP y un archivo CSV que guarda la información:
+
+index.php: Es la página principal donde se muestran todos los registros que ya están en el archivo CSV.
+create.php: Esta página tiene un formulario que permite crear un nuevo registro (añadir datos).
+edit.php: Aquí puedes ver un formulario para modificar un registro ya existente.
+update.php: Se encarga de guardar los cambios cuando editas un registro.
+delete.php: Elimina un registro del archivo CSV.
+data.csv: Aquí es donde se almacenan todos los datos en formato CSV (una tabla de texto, básicamente).",,,2
+670957473ef20,"Leer datos (Read)","En la página index.php, nuestro objetivo es mostrar los datos que están en el archivo data.csv.
+
+Cuando abres index.php, el sistema utiliza PHP para leer el archivo CSV y mostrar cada registro en una tabla. Esto se hace con una función especial de PHP llamada fgetcsv(), que abre el archivo y va leyendo línea por línea. Cada línea es un registro (una persona en nuestra lista), y cada parte de la línea (separada por comas) es una información como el nombre, apellido, edad, etc.","// Abrimos el archivo CSV
+$file = fopen('data.csv', 'r');
+
+// Leemos cada línea (registro)
+while (($line = fgetcsv($file)) !== FALSE) {
+    // Mostramos los datos en una tabla
+    echo '<tr>';
+    echo '<td>' . $line[0] . '</td>'; // Nombre
+    echo '<td>' . $line[1] . '</td>'; // Apellido
+    echo '<td>' . $line[2] . '</td>'; // Edad
+    echo '<td>' . $line[3] . '</td>'; // Correo
+    echo '<td>' . $line[4] . '</td>'; // Teléfono
+    echo '</tr>';
+}","// Abrimos el archivo CSV
+$file = fopen(&#039;data.csv&#039;, &#039;r&#039;);
+
+// Leemos cada línea (registro)
+while (($line = fgetcsv($file)) !== FALSE) {
+    // Mostramos los datos en una tabla
+    echo &#039;&lt;tr&gt;&#039;;
+    echo &#039;&lt;td&gt;&#039; . $line[0] . &#039;&lt;/td&gt;&#039;; // Nombre
+    echo &#039;&lt;td&gt;&#039; . $line[1] . &#039;&lt;/td&gt;&#039;; // Apellido
+    echo &#039;&lt;td&gt;&#039; . $line[2] . &#039;&lt;/td&gt;&#039;; // Edad
+    echo &#039;&lt;td&gt;&#039; . $line[3] . &#039;&lt;/td&gt;&#039;; // Correo
+    echo &#039;&lt;td&gt;&#039; . $line[4] . &#039;&lt;/td&gt;&#039;; // Teléfono
+    echo &#039;&lt;/tr&gt;&#039;;
+}",3
+670957b484251,index.php,"Este es el archivo base para leer la información","&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;CRUD en PHP con archivo CSV&lt;/title&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.6.0.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        $(document).ready(function() {
+            // Función para enviar una petición Ajax para editar un registro
+            function editarRegistro(index) {
+                console.log(index); // imprimir el valor de index
+                $.ajax({
+                    type: 'POST',
+                    url: 'edit.php',
+                    data: {index: index},
+                    success: function() {
+                        window.location = 'edit.php?index=' + index;
+                    }
+                });
+            }
+
+            // Función para enviar una petición Ajax para eliminar un registro
+            function eliminarRegistro(index) {
+                if (confirm('¿Está seguro que desea eliminar este registro?')) {
+                    console.log(index); // imprimir el valor de index
+                    $.ajax({
+                        type: 'POST',
+                        url: 'delete.php',
+                        data: {index: index},
+                        success: function() {
+                            window.location.reload();
+                        }
+                    });
+                }
+            }
+
+            // Agregar eventos click a los botones de editar y eliminar
+            $('.editar').click(function() {
+                var index = $(this).attr('data-index');
+                editarRegistro(index);
+            });
+
+            $('.eliminar').click(function() {
+                var index = $(this).attr('data-index');
+                eliminarRegistro(index);
+            });
+        });
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;CRUD en PHP con archivo CSV&lt;/h1&gt;
+
+    &lt;!-- Agregar un botón para crear un nuevo registro --&gt;
+    &lt;p&gt;&lt;a href=&quot;create.php&quot;&gt;Agregar nuevo registro&lt;/a&gt;&lt;/p&gt;
+
+    &lt;?php
+    // Abrir el archivo CSV en modo lectura
+    $file = fopen('data.csv', 'r');
+
+    // Leer los datos del archivo CSV y almacenarlos en un arreglo
+    $data = array();
+    while (($line = fgetcsv($file)) !== FALSE) {
+        $data[] = $line;
+    }
+
+    // Cerrar el archivo CSV
+    fclose($file);
+
+    // Mostrar los datos en una tabla
+    echo '&lt;table&gt;';
+    echo '&lt;tr&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th&gt;Apellido&lt;/th&gt;&lt;th&gt;Edad&lt;/th&gt;&lt;th&gt;Correo electrónico&lt;/th&gt;&lt;th&gt;Teléfono&lt;/th&gt;&lt;th&gt;Acciones&lt;/th&gt;&lt;/tr&gt;';
+
+    foreach ($data as $index =&gt; $row) {
+        // Mostrar los datos en una fila de la tabla
+        echo '&lt;tr&gt;';
+        echo '&lt;td&gt;' . $row[0] . '&lt;/td&gt;';
+        echo '&lt;td&gt;' . (isset($row[1]) ? $row[1] : '') . '&lt;/td&gt;';
+        echo '&lt;td&gt;' . (isset($row[2]) ? $row[2] : '') . '&lt;/td&gt;';
+        echo '&lt;td&gt;' . (isset($row[3]) ? $row[3] : '') . '&lt;/td&gt;';
+        echo '&lt;td&gt;' . (isset($row[4]) ? $row[4] : '') . '&lt;/td&gt;';
+
+        // Agregar botones de edición y eliminación a la fila de la tabla
+        echo '&lt;td&gt;';
+        echo '&lt;button class=&quot;editar&quot; data-index=&quot;' . $index . '&quot;&gt;Editar&lt;/button&gt;';
+        echo '&lt;button class=&quot;eliminar&quot; data-index=&quot;' . $index . '&quot;&gt;Eliminar&lt;/button&gt;';
+        echo '&lt;/td&gt;';
+
+        echo '&lt;/tr&gt;';
+    }
+
+    echo '&lt;/table&gt;';
+    ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;","&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;CRUD en PHP con archivo CSV&lt;/title&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.6.0.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        $(document).ready(function() {
+            // Función para enviar una petición Ajax para editar un registro
+            function editarRegistro(index) {
+                console.log(index); // imprimir el valor de index
+                $.ajax({
+                    type: &#039;POST&#039;,
+                    url: &#039;edit.php&#039;,
+                    data: {index: index},
+                    success: function() {
+                        window.location = &#039;edit.php?index=&#039; + index;
+                    }
+                });
+            }
+
+            // Función para enviar una petición Ajax para eliminar un registro
+            function eliminarRegistro(index) {
+                if (confirm(&#039;¿Está seguro que desea eliminar este registro?&#039;)) {
+                    console.log(index); // imprimir el valor de index
+                    $.ajax({
+                        type: &#039;POST&#039;,
+                        url: &#039;delete.php&#039;,
+                        data: {index: index},
+                        success: function() {
+                            window.location.reload();
+                        }
+                    });
+                }
+            }
+
+            // Agregar eventos click a los botones de editar y eliminar
+            $(&#039;.editar&#039;).click(function() {
+                var index = $(this).attr(&#039;data-index&#039;);
+                editarRegistro(index);
+            });
+
+            $(&#039;.eliminar&#039;).click(function() {
+                var index = $(this).attr(&#039;data-index&#039;);
+                eliminarRegistro(index);
+            });
+        });
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;CRUD en PHP con archivo CSV&lt;/h1&gt;
+
+    &lt;!-- Agregar un botón para crear un nuevo registro --&gt;
+    &lt;p&gt;&lt;a href=&quot;create.php&quot;&gt;Agregar nuevo registro&lt;/a&gt;&lt;/p&gt;
+
+    &lt;?php
+    // Abrir el archivo CSV en modo lectura
+    $file = fopen(&#039;data.csv&#039;, &#039;r&#039;);
+
+    // Leer los datos del archivo CSV y almacenarlos en un arreglo
+    $data = array();
+    while (($line = fgetcsv($file)) !== FALSE) {
+        $data[] = $line;
+    }
+
+    // Cerrar el archivo CSV
+    fclose($file);
+
+    // Mostrar los datos en una tabla
+    echo &#039;&lt;table&gt;&#039;;
+    echo &#039;&lt;tr&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th&gt;Apellido&lt;/th&gt;&lt;th&gt;Edad&lt;/th&gt;&lt;th&gt;Correo electrónico&lt;/th&gt;&lt;th&gt;Teléfono&lt;/th&gt;&lt;th&gt;Acciones&lt;/th&gt;&lt;/tr&gt;&#039;;
+
+    foreach ($data as $index =&gt; $row) {
+        // Mostrar los datos en una fila de la tabla
+        echo &#039;&lt;tr&gt;&#039;;
+        echo &#039;&lt;td&gt;&#039; . $row[0] . &#039;&lt;/td&gt;&#039;;
+        echo &#039;&lt;td&gt;&#039; . (isset($row[1]) ? $row[1] : &#039;&#039;) . &#039;&lt;/td&gt;&#039;;
+        echo &#039;&lt;td&gt;&#039; . (isset($row[2]) ? $row[2] : &#039;&#039;) . &#039;&lt;/td&gt;&#039;;
+        echo &#039;&lt;td&gt;&#039; . (isset($row[3]) ? $row[3] : &#039;&#039;) . &#039;&lt;/td&gt;&#039;;
+        echo &#039;&lt;td&gt;&#039; . (isset($row[4]) ? $row[4] : &#039;&#039;) . &#039;&lt;/td&gt;&#039;;
+
+        // Agregar botones de edición y eliminación a la fila de la tabla
+        echo &#039;&lt;td&gt;&#039;;
+        echo &#039;&lt;button class=&quot;editar&quot; data-index=&quot;&#039; . $index . &#039;&quot;&gt;Editar&lt;/button&gt;&#039;;
+        echo &#039;&lt;button class=&quot;eliminar&quot; data-index=&quot;&#039; . $index . &#039;&quot;&gt;Eliminar&lt;/button&gt;&#039;;
+        echo &#039;&lt;/td&gt;&#039;;
+
+        echo &#039;&lt;/tr&gt;&#039;;
+    }
+
+    echo &#039;&lt;/table&gt;&#039;;
+    ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;",3
+670958357dc96,"Crear un nuevo registro (Create)","Cuando quieras añadir un nuevo registro, usas la página create.php. Aquí se muestra un formulario donde escribes los datos (nombre, apellido, edad, correo, teléfono). Cuando envías este formulario, los datos se guardan en el archivo data.csv.","if (isset($_POST['submit'])) {
+    // Datos del formulario
+    $record = array($name, $apellido, $edad, $email, $phone);
+
+    // Guardar los datos en el archivo CSV
+    $file = fopen('data.csv', 'a');
+    fputcsv($file, $record);
+    fclose($file);
+}","if (isset($_POST[&#039;submit&#039;])) {
+    // Datos del formulario
+    $record = array($name, $apellido, $edad, $email, $phone);
+
+    // Guardar los datos en el archivo CSV
+    $file = fopen(&#039;data.csv&#039;, &#039;a&#039;);
+    fputcsv($file, $record);
+    fclose($file);
+}",4
+67096996f1e49,create.php,"Archivo de muestra del archivo responsable de insertar la información.","<?php
+// Verificar si se ha enviado el formulario de creación
+if (isset($_POST['submit'])) {
+    // Obtener los datos del formulario
+    $name = $_POST['name'];
+    $apellido = $_POST['apellido'];
+    $edad = $_POST['edad'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+
+    // Validar los datos
+    $errors = array();
+    if (empty($name)) {
+        $errors[] = 'El nombre es requerido.';
+    }
+    if (empty($apellido)) {
+        $errors[] = 'El apellido es requerido.';
+    }
+    if (empty($edad)) {
+        $errors[] = 'La edad es requerido.';
+    }
+    if (empty($email)) {
+        $errors[] = 'El correo electrónico es requerido.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = 'El correo electrónico no es válido.';
+    }
+    if (empty($phone)) {
+        $errors[] = 'El número de teléfono es requerido.';
+    }
+
+    // Si no hay errores, agregar el registro al archivo CSV
+    if (empty($errors)) {
+        // Crear un arreglo con los datos del nuevo registro
+        $record = array($name, $apellido, $edad, $email, $phone);
+
+        // Abrir el archivo CSV en modo escritura
+        $file = fopen('data.csv', 'a');
+
+        // Escribir el registro en el archivo CSV
+        fputcsv($file, $record);
+
+        // Cerrar el archivo CSV
+        fclose($file);
+
+        // Redirigir al usuario a la página principal
+        header('Location: index.php');
+        exit();
+    }
+} else {
+    // Establecer valores predeterminados para los campos del formulario
+    $name = '';
+    $apellido = '';
+    $edad = '';
+    $email = '';
+    $phone = '';
+
+    // Establecer un arreglo vacío para los errores
+    $errors = array();
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear registro</title>
+</head>
+<body>
+    <h1>Crear registro</h1>
+    <?php if (!empty($errors)): ?>
+        <ul>
+            <?php foreach ($errors as $error): ?>
+                <li><?php echo $error; ?></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+    <form method=""post"">
+        <label for=""name"">Nombre:</label>
+        <input type=""text"" name=""name"" id=""name"" value=""<?php echo htmlspecialchars($name); ?>""><br>
+        <label for=""apellido"">Apellido:</label>
+        <input type=""text"" name=""apellido"" id=""apellido"" value=""<?php echo htmlspecialchars($apellido); ?>""><br>
+        <label for=""edad"">Edad:</label>
+        <input type=""text"" name=""edad"" id=""edad"" value=""<?php echo htmlspecialchars($edad); ?>""><br>
+        <label for=""email"">Correo electrónico:</label>
+        <input type=""email"" name=""email"" id=""email"" value=""<?php echo htmlspecialchars($email); ?>""><br>
+        <label for=""phone"">Teléfono:</label>
+        <input type=""text"" name=""phone"" id=""phone"" value=""<?php echo htmlspecialchars($phone); ?>""><br>
+        <input type=""submit"" name=""submit"" value=""Crear"">
+    </form>
+</body>
+</html>","&lt;?php
+// Verificar si se ha enviado el formulario de creación
+if (isset($_POST[&#039;submit&#039;])) {
+    // Obtener los datos del formulario
+    $name = $_POST[&#039;name&#039;];
+    $apellido = $_POST[&#039;apellido&#039;];
+    $edad = $_POST[&#039;edad&#039;];
+    $email = $_POST[&#039;email&#039;];
+    $phone = $_POST[&#039;phone&#039;];
+
+    // Validar los datos
+    $errors = array();
+    if (empty($name)) {
+        $errors[] = &#039;El nombre es requerido.&#039;;
+    }
+    if (empty($apellido)) {
+        $errors[] = &#039;El apellido es requerido.&#039;;
+    }
+    if (empty($edad)) {
+        $errors[] = &#039;La edad es requerido.&#039;;
+    }
+    if (empty($email)) {
+        $errors[] = &#039;El correo electrónico es requerido.&#039;;
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = &#039;El correo electrónico no es válido.&#039;;
+    }
+    if (empty($phone)) {
+        $errors[] = &#039;El número de teléfono es requerido.&#039;;
+    }
+
+    // Si no hay errores, agregar el registro al archivo CSV
+    if (empty($errors)) {
+        // Crear un arreglo con los datos del nuevo registro
+        $record = array($name, $apellido, $edad, $email, $phone);
+
+        // Abrir el archivo CSV en modo escritura
+        $file = fopen(&#039;data.csv&#039;, &#039;a&#039;);
+
+        // Escribir el registro en el archivo CSV
+        fputcsv($file, $record);
+
+        // Cerrar el archivo CSV
+        fclose($file);
+
+        // Redirigir al usuario a la página principal
+        header(&#039;Location: index.php&#039;);
+        exit();
+    }
+} else {
+    // Establecer valores predeterminados para los campos del formulario
+    $name = &#039;&#039;;
+    $apellido = &#039;&#039;;
+    $edad = &#039;&#039;;
+    $email = &#039;&#039;;
+    $phone = &#039;&#039;;
+
+    // Establecer un arreglo vacío para los errores
+    $errors = array();
+}
+?&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Crear registro&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Crear registro&lt;/h1&gt;
+    &lt;?php if (!empty($errors)): ?&gt;
+        &lt;ul&gt;
+            &lt;?php foreach ($errors as $error): ?&gt;
+                &lt;li&gt;&lt;?php echo $error; ?&gt;&lt;/li&gt;
+            &lt;?php endforeach; ?&gt;
+        &lt;/ul&gt;
+    &lt;?php endif; ?&gt;
+    &lt;form method=&quot;post&quot;&gt;
+        &lt;label for=&quot;name&quot;&gt;Nombre:&lt;/label&gt;
+        &lt;input type=&quot;text&quot; name=&quot;name&quot; id=&quot;name&quot; value=&quot;&lt;?php echo htmlspecialchars($name); ?&gt;&quot;&gt;&lt;br&gt;
+        &lt;label for=&quot;apellido&quot;&gt;Apellido:&lt;/label&gt;
+        &lt;input type=&quot;text&quot; name=&quot;apellido&quot; id=&quot;apellido&quot; value=&quot;&lt;?php echo htmlspecialchars($apellido); ?&gt;&quot;&gt;&lt;br&gt;
+        &lt;label for=&quot;edad&quot;&gt;Edad:&lt;/label&gt;
+        &lt;input type=&quot;text&quot; name=&quot;edad&quot; id=&quot;edad&quot; value=&quot;&lt;?php echo htmlspecialchars($edad); ?&gt;&quot;&gt;&lt;br&gt;
+        &lt;label for=&quot;email&quot;&gt;Correo electrónico:&lt;/label&gt;
+        &lt;input type=&quot;email&quot; name=&quot;email&quot; id=&quot;email&quot; value=&quot;&lt;?php echo htmlspecialchars($email); ?&gt;&quot;&gt;&lt;br&gt;
+        &lt;label for=&quot;phone&quot;&gt;Teléfono:&lt;/label&gt;
+        &lt;input type=&quot;text&quot; name=&quot;phone&quot; id=&quot;phone&quot; value=&quot;&lt;?php echo htmlspecialchars($phone); ?&gt;&quot;&gt;&lt;br&gt;
+        &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Crear&quot;&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;",4
+6709586f9f789,"Editar un registro (Update)","Si quieres modificar un dato, usas la página edit.php. Aquí seleccionas el registro que quieres editar, y el formulario se llena automáticamente con los datos actuales de esa persona. Puedes cambiar lo que necesites (nombre, correo, etc.).
+
+Cuando guardas los cambios, el archivo update.php sobrescribe el registro antiguo con los datos nuevos. Para esto, el sistema primero lee todos los registros, edita el que cambiaste, y luego guarda todo nuevamente en el archivo CSV.","// Actualizamos el registro con los nuevos datos
+$data[$index] = array($nombre, $apellido, $edad, $email, $telefono);","// Actualizamos el registro con los nuevos datos
+$data[$index] = array($nombre, $apellido, $edad, $email, $telefono);",5
+670958d6bacb1,edit.php,"Muestra de el archivo responsable de la edición de la información.","<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD en PHP con archivo CSV - Editar registro</title>
+</head>
+<body>
+    <h1>CRUD en PHP con archivo CSV - Editar registro</h1>
+
+    <?php
+    // Verificar si se ha enviado un índice de registro
+    if (isset($_GET['index'])) {
+        // Obtener el índice de registro
+        $index = $_GET['index'];
+
+        // Abrir el archivo CSV en modo lectura
+        $file = fopen('data.csv', 'r');
+
+        // Leer los datos del archivo CSV y almacenarlos en un arreglo
+        $data = array();
+        while (($line = fgetcsv($file)) !== FALSE) {
+            $data[] = $line;
+        }
+
+        // Cerrar el archivo CSV
+        fclose($file);
+
+        // Verificar si el índice de registro es válido
+        if (isset($data[$index])) {
+            // Obtener los datos del registro a editar
+            $registro = $data[$index];
+            $nombre = $registro[0];
+            $apellido = $registro[1];
+            $edad = $registro[2];
+            $email = $registro[3];
+            $telefono = $registro[4];
+
+            // Mostrar el formulario para editar los datos del registro
+            echo '<form method=""POST"" action=update.php>';
+            echo '<input type=""hidden"" name=""index"" value=""' . $index . '"">';
+            echo 'Nombre: <input type=""text"" name=""nombre"" value=""' . $nombre . '""><br>';
+            echo 'Apellido: <input type=""text"" name=""apellido"" value=""' . $apellido . '""><br>';
+            echo 'Edad: <input type=""number"" name=""edad"" value=""' . $edad . '""""><br>';
+            echo 'Correo electrónico: <input type=""email"" name=""email"" value=""' . $email . '""><br>';
+            echo 'Teléfono: <input type=""tel"" name=""telefono"" value=""' . $telefono . '""><br>';
+            echo '<input type=""submit"" value=""Guardar"">';
+            echo '</form>';
+        } else {
+            echo '<p>El índice de registro no es válido.</p>';
+        }
+    } else {
+        echo '<p>No se ha especificado un índice de registro para editar.</p>';
+    }
+    ?>
+</body>
+</html>","&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;CRUD en PHP con archivo CSV - Editar registro&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;CRUD en PHP con archivo CSV - Editar registro&lt;/h1&gt;
+
+    &lt;?php
+    // Verificar si se ha enviado un índice de registro
+    if (isset($_GET[&#039;index&#039;])) {
+        // Obtener el índice de registro
+        $index = $_GET[&#039;index&#039;];
+
+        // Abrir el archivo CSV en modo lectura
+        $file = fopen(&#039;data.csv&#039;, &#039;r&#039;);
+
+        // Leer los datos del archivo CSV y almacenarlos en un arreglo
+        $data = array();
+        while (($line = fgetcsv($file)) !== FALSE) {
+            $data[] = $line;
+        }
+
+        // Cerrar el archivo CSV
+        fclose($file);
+
+        // Verificar si el índice de registro es válido
+        if (isset($data[$index])) {
+            // Obtener los datos del registro a editar
+            $registro = $data[$index];
+            $nombre = $registro[0];
+            $apellido = $registro[1];
+            $edad = $registro[2];
+            $email = $registro[3];
+            $telefono = $registro[4];
+
+            // Mostrar el formulario para editar los datos del registro
+            echo &#039;&lt;form method=&quot;POST&quot; action=update.php&gt;&#039;;
+            echo &#039;&lt;input type=&quot;hidden&quot; name=&quot;index&quot; value=&quot;&#039; . $index . &#039;&quot;&gt;&#039;;
+            echo &#039;Nombre: &lt;input type=&quot;text&quot; name=&quot;nombre&quot; value=&quot;&#039; . $nombre . &#039;&quot;&gt;&lt;br&gt;&#039;;
+            echo &#039;Apellido: &lt;input type=&quot;text&quot; name=&quot;apellido&quot; value=&quot;&#039; . $apellido . &#039;&quot;&gt;&lt;br&gt;&#039;;
+            echo &#039;Edad: &lt;input type=&quot;number&quot; name=&quot;edad&quot; value=&quot;&#039; . $edad . &#039;&quot;&quot;&gt;&lt;br&gt;&#039;;
+            echo &#039;Correo electrónico: &lt;input type=&quot;email&quot; name=&quot;email&quot; value=&quot;&#039; . $email . &#039;&quot;&gt;&lt;br&gt;&#039;;
+            echo &#039;Teléfono: &lt;input type=&quot;tel&quot; name=&quot;telefono&quot; value=&quot;&#039; . $telefono . &#039;&quot;&gt;&lt;br&gt;&#039;;
+            echo &#039;&lt;input type=&quot;submit&quot; value=&quot;Guardar&quot;&gt;&#039;;
+            echo &#039;&lt;/form&gt;&#039;;
+        } else {
+            echo &#039;&lt;p&gt;El índice de registro no es válido.&lt;/p&gt;&#039;;
+        }
+    } else {
+        echo &#039;&lt;p&gt;No se ha especificado un índice de registro para editar.&lt;/p&gt;&#039;;
+    }
+    ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;",5
+6709599fe81ca,"Eliminar un registro (Delete)","Si decides borrar un registro, lo haces con la página delete.php. El sistema elimina esa línea del archivo CSV. Lo que hace es:
+Leer todos los registros.
+Eliminar el registro que seleccionaste.
+Volver a escribir el archivo CSV sin ese registro.","// Eliminar el registro del arreglo
+unset($data[$index]);
+
+// Reescribir el archivo CSV con los datos actualizados
+$file = fopen('data.csv', 'w');
+foreach ($data as $line) {
+    fputcsv($file, $line);
+}","// Eliminar el registro del arreglo
+unset($data[$index]);
+
+// Reescribir el archivo CSV con los datos actualizados
+$file = fopen(&#039;data.csv&#039;, &#039;w&#039;);
+foreach ($data as $line) {
+    fputcsv($file, $line);
+}",6
+670959f7399c1,delete.php,"Un archivo de muestra para eliminar un registro de la base de datos.","&lt;?php
+// Verificar si se ha enviado un índice de registro
+if (isset($_POST['index'])) {
+    // Obtener el índice de registro
+    $index = $_POST['index'];
+
+    // Abrir el archivo CSV en modo lectura
+    $file = fopen('data.csv', 'r');
+
+    // Leer los datos del archivo CSV y almacenarlos en un arreglo
+    $data = array();
+    while (($line = fgetcsv($file)) !== FALSE) {
+        $data[] = $line;
+    }
+
+    // Cerrar el archivo CSV
+    fclose($file);
+
+    // Verificar si el índice de registro es válido
+    if (isset($data[$index])) {
+        // Eliminar el registro del arreglo
+        unset($data[$index]);
+
+        // Abrir el archivo CSV en modo escritura
+        $file = fopen('data.csv', 'w');
+
+        // Escribir los datos actualizados en el archivo CSV
+        foreach ($data as $line) {
+            fputcsv($file, $line);
+        }
+
+        // Cerrar el archivo CSV
+        fclose($file);
+
+        // Redirigir al usuario a la página principal
+        header('Location: index.php');
+        exit();
+    } else {
+        echo '&lt;p&gt;El índice de registro no es válido.&lt;/p&gt;';
+    }
+} else {
+    echo '&lt;p&gt;No se ha especificado un índice de registro para eliminar.&lt;/p&gt;';
+}
+?&gt;","&lt;?php
+// Verificar si se ha enviado un índice de registro
+if (isset($_POST[&#039;index&#039;])) {
+    // Obtener el índice de registro
+    $index = $_POST[&#039;index&#039;];
+
+    // Abrir el archivo CSV en modo lectura
+    $file = fopen(&#039;data.csv&#039;, &#039;r&#039;);
+
+    // Leer los datos del archivo CSV y almacenarlos en un arreglo
+    $data = array();
+    while (($line = fgetcsv($file)) !== FALSE) {
+        $data[] = $line;
+    }
+
+    // Cerrar el archivo CSV
+    fclose($file);
+
+    // Verificar si el índice de registro es válido
+    if (isset($data[$index])) {
+        // Eliminar el registro del arreglo
+        unset($data[$index]);
+
+        // Abrir el archivo CSV en modo escritura
+        $file = fopen(&#039;data.csv&#039;, &#039;w&#039;);
+
+        // Escribir los datos actualizados en el archivo CSV
+        foreach ($data as $line) {
+            fputcsv($file, $line);
+        }
+
+        // Cerrar el archivo CSV
+        fclose($file);
+
+        // Redirigir al usuario a la página principal
+        header(&#039;Location: index.php&#039;);
+        exit();
+    } else {
+        echo &#039;&lt;p&gt;El índice de registro no es válido.&lt;/p&gt;&#039;;
+    }
+} else {
+    echo &#039;&lt;p&gt;No se ha especificado un índice de registro para eliminar.&lt;/p&gt;&#039;;
+}
+?&gt;",6
+67095a6a33f6a,"Validaciones y manejo de errores","Antes de guardar cualquier dato, el sistema siempre verifica que la información esté completa y sea válida. Por ejemplo:
+
+El nombre no puede estar vacío.
+El correo debe tener un formato válido.","if (empty($name)) {
+    $errors[] = 'El nombre es requerido.';
+}
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = 'El correo no es válido.';
+}","if (empty($name)) {
+    $errors[] = &#039;El nombre es requerido.&#039;;
+}
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = &#039;El correo no es válido.&#039;;
+}",7
+67095a7f00cf8,"Uso en el ámbito laboral","Este tipo de sistemas CRUD con archivos CSV puede ser útil en situaciones donde no se requiere una base de datos grande o compleja. Algunos ejemplos son:
+
+Gestionar listas de contactos simples.
+Registrar tareas en una pequeña empresa.
+Controlar inventarios de productos en negocios pequeños.
+El beneficio es que es fácil de implementar y no necesitas instalar bases de datos adicionales como MySQL. Sin embargo, la desventaja es que, a medida que crecen los datos, manejar grandes volúmenes puede volverse difícil y poco eficiente.",,,3
+67096d7a9d0f7,1,2,"<!DOCTYPE html>
+<html lang=""en"">
+<head>
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <title>Document</title>
+</head>
+<body>
+    <strong>hola mundo!!!</strong>
+</body>
+</html>","&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;strong&gt;hola mundo!!!&lt;/strong&gt;
+&lt;/body&gt;
+&lt;/html&gt;",8

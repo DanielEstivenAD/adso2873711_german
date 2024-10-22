@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedades en Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-8">
+    <!-- Encabezado común -->
+    <header class="bg-blue-700 text-white p-6 rounded-lg shadow-lg mb-8 text-center">
+        <h1 class="text-4xl font-bold">Propiedades en Tailwind CSS</h1>
+        <p class="mt-4 text-lg">Explora las propiedades que puedes aplicar con Tailwind CSS para personalizar tu diseño.</p>
+    </header>
+
+    <!-- Menú de navegación común -->
+    <nav class="bg-gray-800 p-4 rounded-lg mb-8">
+        <ul class="flex justify-center space-x-8 text-white">
+            <li><a href="index.html" class="hover:text-blue-300">Inicio</a></li>
+            <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
+            <li><a href="interfaz.html" class="hover:text-blue-300">Interfaz</a></li>
+            <li><a href="componentes.html" class="hover:text-blue-300">Componentes</a></li>
+            <li><a href="colores.html" class="hover:text-blue-300">Colores</a></li>
+            <li><a href="dimensiones.html" class="hover:text-blue-300">Dimensiones</a></li>
+            <li><a href="propiedades.html" class="hover:text-blue-300">Propiedades</a></li>
+            <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal de la página de propiedades -->
+    <main class="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <section>
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">¿Qué son las Propiedades?</h2>
+            <p class="text-gray-700 text-lg mb-4">
+                En Tailwind CSS, las propiedades son clases de utilidad que puedes aplicar a los elementos HTML para modificar su apariencia y comportamiento. Estas propiedades permiten personalizar fácilmente la tipografía, los colores, el espaciado, y mucho más.
+            </p>
+        </section>
+
+        <!-- Propiedades de Tipografía -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Tipografía</h2>
+            <p class="text-gray-700 mb-4">
+                Las clases de tipografía en Tailwind permiten controlar el tamaño, peso, y alineación del texto. Aquí algunos ejemplos:
+            </p>
+
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold">Texto Grande</h3>
+                <p class="text-lg">Este es un texto de tamaño grande.</p>
+                <p class="font-semibold">Este es un texto con peso semibold.</p>
+                <p class="text-right">Este texto está alineado a la derecha.</p>
+            </div>
+
+            <pre class="bg-gray-100 p-4 rounded-lg">
+                <code>
+&lt;h3 class="text-2xl font-bold"&gt;Texto Grande&lt;/h3&gt;
+&lt;p class="text-lg"&gt;Este es un texto de tamaño grande.&lt;/p&gt;
+&lt;p class="font-semibold"&gt;Este es un texto con peso semibold.&lt;/p&gt;
+&lt;p class="text-right"&gt;Este texto está alineado a la derecha.&lt;/p&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Propiedades de Color -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Colores</h2>
+            <p class="text-gray-700 mb-4">
+                Tailwind CSS proporciona una amplia paleta de colores que puedes utilizar para personalizar el fondo, el texto, y otros elementos. Aquí tienes algunos ejemplos:
+            </p>
+
+            <div class="mb-8">
+                <div class="bg-red-500 text-white p-4 mb-2">Fondo Rojo</div>
+                <div class="bg-green-500 text-white p-4 mb-2">Fondo Verde</div>
+                <div class="bg-blue-500 text-white p-4 mb-2">Fondo Azul</div>
+                <div class="bg-yellow-500 text-white p-4 mb-2">Fondo Amarillo</div>
+            </div>
+
+            <pre class="bg-gray-100 p-4 rounded-lg">
+                <code>
+&lt;div class="bg-red-500 text-white p-4"&gt;Fondo Rojo&lt;/div&gt;
+&lt;div class="bg-green-500 text-white p-4"&gt;Fondo Verde&lt;/div&gt;
+&lt;div class="bg-blue-500 text-white p-4"&gt;Fondo Azul&lt;/div&gt;
+&lt;div class="bg-yellow-500 text-white p-4"&gt;Fondo Amarillo&lt;/div&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Propiedades de Espaciado -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Espaciado (Margin & Padding)</h2>
+            <p class="text-gray-700 mb-4">
+                Las clases de espaciado permiten controlar los márgenes y rellenos de los elementos. Aquí tienes algunos ejemplos de su uso:
+            </p>
+
+            <div class="mb-8">
+                <div class="bg-purple-500 text-white p-6 m-4">Este div tiene un relleno y margen aplicados.</div>
+                <div class="bg-purple-500 text-white p-8">Este div solo tiene relleno.</div>
+            </div>
+
+            <pre class="bg-gray-100 p-4 rounded-lg">
+                <code>
+&lt;div class="bg-purple-500 text-white p-6 m-4"&gt;Este div tiene un relleno y margen aplicados.&lt;/div&gt;
+&lt;div class="bg-purple-500 text-white p-8"&gt;Este div solo tiene relleno.&lt;/div&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Propiedades de Bordes -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Bordes</h2>
+            <p class="text-gray-700 mb-4">
+                Puedes agregar bordes a tus elementos utilizando las clases de Tailwind. Aquí tienes ejemplos de bordes sólidos y redondeados:
+            </p>
+
+            <div class="mb-8">
+                <div class="border-2 border-blue-500 p-4 mb-2">Borde Sólido Azul</div>
+                <div class="border-2 border-green-500 rounded-lg p-4">Borde Verde Redondeado</div>
+            </div>
+
+            <pre class="bg-gray-100 p-4 rounded-lg">
+                <code>
+&lt;div class="border-2 border-blue-500 p-4"&gt;Borde Sólido Azul&lt;/div&gt;
+&lt;div class="border-2 border-green-500 rounded-lg p-4"&gt;Borde Verde Redondeado&lt;/div&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Propiedades de Sombra -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Sombras</h2>
+            <p class="text-gray-700 mb-4">
+                Las sombras se pueden aplicar a los elementos para crear un efecto de elevación. Aquí hay algunos ejemplos:
+            </p>
+
+            <div class="mb-8">
+                <div class="bg-gray-300 p-4 shadow-lg">Sombra Grande</div>
+                <div class="bg-gray-300 p-4 shadow-md mt-4">Sombra Mediana</div>
+                <div class="bg-gray-300 p-4 shadow-sm mt-4">Sombra Pequeña</div>
+            </div>
+
+            <pre class="bg-gray-100 p-4 rounded-lg">
+                <code>
+&lt;div class="bg-gray-300 p-4 shadow-lg"&gt;Sombra Grande&lt;/div&gt;
+&lt;div class="bg-gray-300 p-4 shadow-md mt-4"&gt;Sombra Mediana&lt;/div&gt;
+&lt;div class="bg-gray-300 p-4 shadow-sm mt-4"&gt;Sombra Pequeña&lt;/div&gt;
+                </code>
+            </pre>
+        </section>
+    </main>
+
+    <!-- Pie de página común -->
+    <footer class="bg-gray-800 text-white p-4 rounded-lg mt-8 text-center">
+        <p class="text-sm">Guía de Tailwind CSS - Ing: Jose Germán Estrada Clavijo</p>
+    </footer>
+</body>
+
+</html>

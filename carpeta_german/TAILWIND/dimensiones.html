@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimensiones en Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-8">
+    <!-- Encabezado común -->
+    <header class="bg-blue-700 text-white p-6 rounded-lg shadow-lg mb-8 text-center">
+        <h1 class="text-4xl font-bold">Dimensiones en Tailwind CSS</h1>
+        <p class="mt-4 text-lg">Aprende sobre las diferentes dimensiones que puedes aplicar con Tailwind CSS.</p>
+    </header>
+
+    <!-- Menú de navegación común -->
+    <nav class="bg-gray-800 p-4 rounded-lg mb-8">
+        <ul class="flex justify-center space-x-8 text-white">
+            <li><a href="index.html" class="hover:text-blue-300">Inicio</a></li>
+            <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
+            <li><a href="interfaz.html" class="hover:text-blue-300">Interfaz</a></li>
+            <li><a href="componentes.html" class="hover:text-blue-300">Componentes</a></li>
+            <li><a href="colores.html" class="hover:text-blue-300">Colores</a></li>
+            <li><a href="dimensiones.html" class="hover:text-blue-300">Dimensiones</a></li>
+            <li><a href="propiedades.html" class="hover:text-blue-300">Propiedades</a></li>
+            <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal de la página de dimensiones -->
+    <main class="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <section>
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">¿Qué son las Dimensiones?</h2>
+            <p class="text-gray-700 text-lg mb-4">
+                Las dimensiones en Tailwind CSS se refieren al tamaño y espacio de los elementos en tu interfaz de usuario.
+                Puedes controlar el ancho, alto, márgenes y rellenos de los elementos utilizando clases de utilidad predefinidas.
+            </p>
+        </section>
+
+        <!-- Dimensiones de Ancho -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Ancho (Width)</h2>
+            <p class="text-gray-700 mb-4">
+                Tailwind ofrece varias clases para establecer el ancho de un elemento. Aquí algunos ejemplos:
+            </p>
+
+            <div class="mb-8">
+                <div class="bg-blue-500 text-white p-4 mb-2 w-1/4">Ancho: 25%</div>
+                <div class="bg-blue-500 text-white p-4 mb-2 w-1/2">Ancho: 50%</div>
+                <div class="bg-blue-500 text-white p-4 mb-2 w-3/4">Ancho: 75%</div>
+                <div class="bg-blue-500 text-white p-4 mb-2 w-full">Ancho: 100%</div>
+            </div>
+
+            <pre class="bg-gray-100 p-4 rounded-lg">
+                <code>
+&lt;div class="bg-blue-500 text-white p-4 w-1/4"&gt;Ancho: 25%&lt;/div&gt;
+&lt;div class="bg-blue-500 text-white p-4 w-1/2"&gt;Ancho: 50%&lt;/div&gt;
+&lt;div class="bg-blue-500 text-white p-4 w-3/4"&gt;Ancho: 75%&lt;/div&gt;
+&lt;div class="bg-blue-500 text-white p-4 w-full"&gt;Ancho: 100%&lt;/div&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Dimensiones de Alto -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Alto (Height)</h2>
+            <p class="text-gray-700 mb-4">
+                Al igual que el ancho, Tailwind también proporciona clases para controlar la altura de un elemento.
+                Aquí tienes algunos ejemplos:
+            </p>
+
+            <div class="mb-8">
+                <div class="bg-green-500 text-white p-4 mb-2 h-12">Alto: 3rem</div>
+                <div class="bg-green-500 text-white p-4 mb-2 h-24">Alto: 6rem</div>
+                <div class="bg-green-500 text-white p-4 mb-2 h-32">Alto: 8rem</div>
+                <div class="bg-green-500 text-white p-4 mb-2 h-full">Alto: 100%</div>
+            </div>
+
+            <pre class="bg-gray-100 p-4 rounded-lg">
+                <code>
+&lt;div class="bg-green-500 text-white p-4 h-12"&gt;Alto: 3rem&lt;/div&gt;
+&lt;div class="bg-green-500 text-white p-4 h-24"&gt;Alto: 6rem&lt;/div&gt;
+&lt;div class="bg-green-500 text-white p-4 h-32"&gt;Alto: 8rem&lt;/div&gt;
+&lt;div class="bg-green-500 text-white p-4 h-full"&gt;Alto: 100%&lt;/div&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Espaciado: Margen y Relleno -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Espaciado (Margin & Padding)</h2>
+            <p class="text-gray-700 mb-4">
+                Puedes controlar los márgenes y rellenos de los elementos usando las clases de Tailwind. A continuación se muestran ejemplos de cómo aplicar márgenes y rellenos:
+            </p>
+
+            <div class="mb-8">
+                <div class="bg-yellow-500 text-white p-4 mb-2 m-4">Margen: 1rem</div>
+                <div class="bg-yellow-500 text-white p-8 mb-2">Relleno: 2rem</div>
+            </div>
+
+            <pre class="bg-gray-100 p-4 rounded-lg">
+                <code>
+&lt;div class="bg-yellow-500 text-white p-4 m-4"&gt;Margen: 1rem&lt;/div&gt;
+&lt;div class="bg-yellow-500 text-white p-8"&gt;Relleno: 2rem&lt;/div&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Dimensiones de Pantalla Completa -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Dimensiones de Pantalla Completa</h2>
+            <p class="text-gray-700 mb-4">
+                Puedes hacer que un elemento ocupe toda la pantalla utilizando clases como `w-screen` y `h-screen`:
+            </p>
+
+            <div class="bg-red-500 text-white w-screen h-screen flex items-center justify-center">
+                <h3 class="text-2xl font-bold">Este es un elemento de pantalla completa</h3>
+            </div>
+
+            <pre class="bg-gray-100 p-4 rounded-lg">
+                <code>
+&lt;div class="bg-red-500 text-white w-screen h-screen flex items-center justify-center"&gt;
+    &lt;h3 class="text-2xl font-bold"&gt;Este es un elemento de pantalla completa&lt;/h3&gt;
+&lt;/div&gt;
+                </code>
+            </pre>
+        </section>
+    </main>
+
+    <!-- Pie de página común -->
+    <footer class="bg-gray-800 text-white p-4 rounded-lg mt-8 text-center">
+        <p class="text-sm">Guía de Tailwind CSS - Ing: Jose Germán Estrada Clavijo</p>
+    </footer>
+</body>
+
+</html>

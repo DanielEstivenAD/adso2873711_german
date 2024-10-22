@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos con Tailwind CSS</title>
+    <script src="js/taildwind-3.4.5.js"></script>
+    <link href="css/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Para el menú hamburguesa en pantallas pequeñas */
+        @media (min-width: 640px) {
+            #nav-menu-small {
+                display: none; /* Oculta el menú pequeño en pantallas grandes */
+            }
+        }
+
+        /* Para el menú principal en pantallas grandes */
+        @media (max-width: 640px) {
+            #nav-menu {
+                display: none; /* Oculta el menú principal en pantallas pequeñas */
+            }
+        }
+
+        .nav-menu-small {
+            flex-direction: column; /* Apilar elementos verticalmente */
+            position: absolute;
+            top: 100%; /* Justo debajo del nav */
+            left: 0;
+            right: 0;
+            background-color: #2d3748; /* Color de fondo del menú */
+            border-radius: 0 0 0.375rem 0.375rem;
+            z-index: 10;
+        }
+
+        .nav-menu-small li {
+            padding: 1rem; /* Espaciado interno para los elementos */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 p-8">
+    <!-- Encabezado común -->
+    <header class="bg-blue-700 text-white p-6 rounded-lg shadow-lg mb-8 text-center">
+        <h1 class="text-4xl font-bold">Ejemplos con Tailwind CSS</h1>
+        <p class="mt-4 text-lg">Ve algunos ejemplos prácticos de uso de Tailwind CSS.</p>
+    </header>
+
+    <!-- Menú de navegación común -->
+    <nav class="bg-gray-800 p-4 rounded-lg mb-8 relative">
+        <div class="flex items-center justify-center">
+            <!-- Menú hamburguesa que se ve solo en pantallas pequeñas -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Menú principal que se ve solo en pantallas grandes -->
+            <ul id="nav-menu" class="flex justify-center space-x-8 text-white">
+                <li><a href="index.html" class="hover:text-blue-300">Inicio</a></li>
+                <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
+                <li><a href="interfaz.html" class="hover:text-blue-300">Interfaz</a></li>
+                <li><a href="componentes.html" class="hover:text-blue-300">Componentes</a></li>
+                <li><a href="colores.html" class="hover:text-blue-300">Colores</a></li>
+                <li><a href="dimensiones.html" class="hover:text-blue-300">Dimensiones</a></li>
+                <li><a href="propiedades.html" class="hover:text-blue-300">Propiedades</a></li>
+                <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
+            </ul>
+        </div>
+
+        <!-- Menú hamburguesa que se despliega en pantallas pequeñas -->
+        <ul id="nav-menu-small" class="nav-menu-small hidden text-white mt-4">
+            <li><a href="index.html" class="hover:text-blue-300">Inicio</a></li>
+            <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
+            <li><a href="interfaz.html" class="hover:text-blue-300">Interfaz</a></li>
+            <li><a href="componentes.html" class="hover:text-blue-300">Componentes</a></li>
+            <li><a href="colores.html" class="hover:text-blue-300">Colores</a></li>
+            <li><a href="dimensiones.html" class="hover:text-blue-300">Dimensiones</a></li>
+            <li><a href="propiedades.html" class="hover:text-blue-300">Propiedades</a></li>
+            <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal de la página de ejemplos -->
+    <main class="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <!-- Tarjetas -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Tarjetas</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                    <h3 class="text-xl font-semibold">Tarjeta 1</h3>
+                    <p class="text-gray-700 mb-4">Este es un ejemplo de tarjeta con contenido simple.</p>
+                    <button class="bg-blue-500 text-white p-2 rounded">Acción</button>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                    <h3 class="text-xl font-semibold">Tarjeta 2</h3>
+                    <p class="text-gray-700 mb-4">Aquí hay otra tarjeta con un poco más de contenido.</p>
+                    <button class="bg-green-500 text-white p-2 rounded">Acción</button>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                    <h3 class="text-xl font-semibold">Tarjeta 3</h3>
+                    <p class="text-gray-700 mb-4">Tarjeta con un diseño atractivo y botón personalizado.</p>
+                    <button class="bg-red-500 text-white p-2 rounded">Acción</button>
+                </div>
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg mt-4">
+                <code>
+&lt;div class="bg-white rounded-lg shadow-lg p-4"&gt;
+    &lt;h3 class="text-xl font-semibold"&gt;Tarjeta 1&lt;/h3&gt;
+    &lt;p class="text-gray-700 mb-4"&gt;Contenido de la tarjeta.&lt;/p&gt;
+    &lt;button class="bg-blue-500 text-white p-2 rounded"&gt;Acción&lt;/button&gt;
+&lt;/div&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Formularios -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Formularios</h2>
+            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">Nombre</label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="nombre" type="text" placeholder="Ingrese su nombre">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="email" type="email" placeholder="Ingrese su email">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="mensaje">Mensaje</label>
+                    <textarea
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="mensaje" rows="4" placeholder="Escriba su mensaje aquí..."></textarea>
+                </div>
+                <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded" type="submit">Enviar</button>
+            </form>
+            <pre class="bg-gray-100 p-4 rounded-lg mt-4">
+                <code>
+&lt;form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"&gt;
+    &lt;label&gt;Nombre&lt;/label&gt;
+    &lt;input type="text"&gt;
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Grids -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Grids</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-blue-200 p-4 rounded">Elemento 1</div>
+                <div class="bg-blue-300 p-4 rounded">Elemento 2</div>
+                <div class="bg-blue-400 p-4 rounded">Elemento 3</div>
+                <div class="bg-blue-500 p-4 rounded">Elemento 4</div>
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg mt-4">
+                <code>
+&lt;div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"&gt;
+    &lt;div class="bg-blue-200 p-4 rounded"&gt;Elemento 1&lt;/div&gt;
+    &lt;div class="bg-blue-300 p-4 rounded"&gt;Elemento 2&lt;/div&gt;
+    &lt;div class="bg-blue-400 p-4 rounded"&gt;Elemento 3&lt;/div&gt;
+    &lt;div class="bg-blue-500 p-4 rounded"&gt;Elemento 4&lt;/div&gt;
+&lt;/div&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Listas -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Listas</h2>
+            <h3 class="text-2xl font-semibold">Lista No Ordenada</h3>
+            <ul class="list-disc list-inside mb-4">
+                <li>Elemento 1</li>
+                <li>Elemento 2</li>
+                <li>Elemento 3</li>
+            </ul>
+            <h3 class="text-2xl font-semibold">Lista Ordenada</h3>
+            <ol class="list-decimal list-inside mb-4">
+                <li>Primer elemento</li>
+                <li>Segundo elemento</li>
+                <li>Tercer elemento</li>
+            </ol>
+            <pre class="bg-gray-100 p-4 rounded-lg mt-4">
+                <code>
+&lt;ul class="list-disc list-inside"&gt;
+    &lt;li&gt;Elemento 1&lt;/li&gt;
+    &lt;li&gt;Elemento 2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol class="list-decimal list-inside"&gt;
+    &lt;li&gt;Primer elemento&lt;/li&gt;
+    &lt;li&gt;Segundo elemento&lt;/li&gt;
+&lt;/ol&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Botones -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Botones</h2>
+            <div class="flex space-x-4">
+                <button class="bg-blue-500 text-white p-2 rounded">Botón Primario</button>
+                <button class="bg-gray-300 text-gray-800 p-2 rounded">Botón Secundario</button>
+                <button class="bg-green-500 text-white p-2 rounded">Botón Éxito</button>
+                <button class="bg-red-500 text-white p-2 rounded">Botón Peligroso</button>
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg mt-4">
+                <code>
+&lt;button class="bg-blue-500 text-white p-2 rounded"&gt;Botón Primario&lt;/button&gt;
+&lt;button class="bg-gray-300 text-gray-800 p-2 rounded"&gt;Botón Secundario&lt;/button&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Párrafos -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Párrafos</h2>
+            <p class="text-gray-700 mb-4">Este es un párrafo de ejemplo. Puedes utilizar Tailwind CSS para aplicar
+                estilos a tus párrafos.</p>
+            <p class="text-gray-600 italic mb-4">Este es un párrafo en cursiva para dar énfasis.</p>
+            <p class="text-gray-800 font-bold">Este párrafo es negrita.</p>
+            <pre class="bg-gray-100 p-4 rounded-lg mt-4">
+                <code>
+&lt;p class="text-gray-700"&gt;Este es un párrafo de ejemplo.&lt;/p&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Títulos -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Títulos</h2>
+            <h3 class="text-2xl font-semibold">Título de Sección</h3>
+            <h4 class="text-xl font-semibold">Título de Subsección</h4>
+            <h5 class="text-lg font-semibold">Título de Subsubsección</h5>
+            <pre class="bg-gray-100 p-4 rounded-lg mt-4">
+                <code>
+&lt;h3 class="text-2xl font-semibold"&gt;Título de Sección&lt;/h3&gt;
+&lt;h4 class="text-xl font-semibold"&gt;Título de Sub-sección&lt;/h4&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Colores -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Colores</h2>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-red-500 text-white p-4 rounded">Rojo</div>
+                <div class="bg-blue-500 text-white p-4 rounded">Azul</div>
+                <div class="bg-green-500 text-white p-4 rounded">Verde</div>
+                <div class="bg-yellow-500 text-white p-4 rounded">Amarillo</div>
+                <div class="bg-purple-500 text-white p-4 rounded">Púrpura</div>
+                <div class="bg-pink-500 text-white p-4 rounded">Rosa</div>
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg mt-4">
+                <code>
+&lt;div class="bg-red-500 text-white p-4 rounded"&gt;Rojo&lt;/div&gt;
+&lt;div class="bg-blue-500 text-white p-4 rounded"&gt;Azul&lt;/div&gt;
+                </code>
+            </pre>
+        </section>
+
+        <!-- Bordes -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Bordes</h2>
+            <div class="bg-gray-100 border border-gray-300 rounded p-4 mb-4">
+                Este es un contenedor con borde gris.
+            </div>
+            <div class="bg-white border-2 border-blue-500 rounded p-4 mb-4">
+                Este es un contenedor con borde azul grueso.
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg mt-4">
+                <code>
+&lt;div class="bg-gray-100 border border-gray-300 rounded p-4"&gt;
+    Contenido aquí.
+&lt;/div&gt;
+                </code>
+            </pre>
+        </section>
+        <!-- Imágenes -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Imágenes</h2>
+
+            <h3 class="text-2xl font-semibold mb-4">Agregar una Imagen</h3>
+            <img src="https://via.placeholder.com/300" alt="Ejemplo de imagen"
+                class="w-1/2 h-auto rounded-lg shadow-lg mb-4">
+            <pre class="bg-gray-100 p-4 rounded-lg mt-4">
+        <code>
+&lt;img src="https://via.placeholder.com/300" alt="Ejemplo de imagen" class="w-1/2 h-auto rounded-lg shadow-lg"&gt;
+        </code>
+    </pre>
+
+            <h3 class="text-2xl font-semibold mb-4">Formas y Tamaños</h3>
+            <div class="flex space-x-4">
+                <img src="https://via.placeholder.com/150" alt="Imagen pequeña"
+                    class="w-24 h-24 rounded-full shadow-lg">
+                <img src="https://via.placeholder.com/300" alt="Imagen mediana" class="w-48 h-48 rounded-lg shadow-lg">
+                <img src="https://via.placeholder.com/450" alt="Imagen grande" class="w-64 h-64 rounded-lg shadow-lg">
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg mt-4">
+        <code>
+&lt;img src="https://via.placeholder.com/150" alt="Imagen pequeña" class="w-24 h-24 rounded-full"&gt;
+&lt;img src="https://via.placeholder.com/300" alt="Imagen mediana" class="w-48 h-48 rounded-lg"&gt;
+&lt;img src="https://via.placeholder.com/450" alt="Imagen grande" class="w-64 h-64 rounded-lg"&gt;
+        </code>
+    </pre>
+
+            <h3 class="text-2xl font-semibold mb-4">Estilos de Bordes</h3>
+            <div class="flex space-x-4">
+                <img src="https://via.placeholder.com/300" alt="Imagen con borde redondeado"
+                    class="w-1/2 h-auto rounded-full border-4 border-blue-500 shadow-lg mb-4">
+                <img src="https://via.placeholder.com/300" alt="Imagen con borde cuadrado"
+                    class="w-1/2 h-auto border-4 border-red-500 shadow-lg mb-4">
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg mt-4">
+        <code>
+&lt;img src="https://via.placeholder.com/300" alt="Imagen con borde redondeado" class="w-1/2 h-auto rounded-full border-4 border-blue-500"&gt;
+&lt;img src="https://via.placeholder.com/300" alt="Imagen con borde cuadrado" class="w-1/2 h-auto border-4 border-red-500"&gt;
+        </code>
+    </pre>
+        </section>
+
+
+        <!-- Dropdowns -->
+        <!-- Dropdowns -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Dropdowns</h2>
+            <div class="relative inline-block text-left mb-4" id="dropdown">
+                <div>
+                    <button onclick="toggleDropdown()"
+                        class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
+                        aria-expanded="true" aria-haspopup="true">
+                        Opciones
+                        <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="absolute z-10 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden"
+                    id="dropdown-content">
+                    <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="menu-button"
+                        tabindex="-1">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            role="menuitem">Opción 1</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            role="menuitem">Opción 2</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            role="menuitem">Opción 3</a>
+                    </div>
+                </div>
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg mt-4">
+        <code>
+&lt;div class="relative inline-block text-left"&gt;
+    &lt;button onclick="toggleDropdown()"&gt;Opciones&lt;/button&gt;
+    &lt;div class="dropdown-content"&gt;
+        &lt;a href="#"&gt;Opción 1&lt;/a&gt;
+        &lt;a href="#"&gt;Opción 2&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+        </code>
+    </pre>
+        </section>
+
+    </main>
+
+    <script>
+        function toggleDropdown() {
+            const dropdownContent = document.getElementById('dropdown-content');
+            dropdownContent.classList.toggle('hidden');
+        }
+
+        // Cerrar el dropdown al hacer clic fuera de él
+        window.onclick = function (event) {
+            const dropdownContent = document.getElementById('dropdown-content');
+            if (!event.target.matches('#dropdown button')) {
+                if (!dropdownContent.classList.contains('hidden')) {
+                    dropdownContent.classList.add('hidden');
+                }
+            }
+        }
+    </script>
+
+
+    <!-- Pie de página común -->
+    <footer class="bg-gray-800 text-white p-4 rounded-lg mt-8 text-center">
+        <p class="text-sm">Guía de Tailwind CSS - Ing: Jose Germán Estrada Clavijo</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+1,Introducción,"¿Cómo funciona nuestro sistema con CSV?","Un archivo CSV es como una hoja de cálculo donde los datos están separados por comas. Cada línea del archivo es un registro, y cada columna es un dato diferente de ese registro (por ejemplo: nombre, apellido, edad, correo, teléfono)."
+2,Estructura,"Estructura del proyecto","Aquí es donde empezamos a organizar el sistema. Vamos a tener varios archivos PHP y un archivo CSV que guarda la información"
+3,"Leer datos","Leer datos (Read)","Es la página principal donde se muestran todos los registros que ya están en el archivo CSV."
+4,Crear,"Crear un nuevo registro (Create)","Esta página tiene un formulario que permite crear un nuevo registro (añadir datos)."
+5,Editar,"Editar un registro (Update)","Se encarga de guardar los cambios cuando editas un registro."
+6,Eliminar,"Eliminar un registro (Delete)","Elimina un registro del archivo CSV."
+7,Validacion,"Validaciones y manejo de errores","La validación asegura que los datos ingresados en un formulario cumplan con ciertos criterios (como no estar vacíos o tener el formato correcto) antes de ser guardados o procesados en el sistema."
+8,Uso,"Uso en el ámbito laboral","Este tipo de sistemas CRUD con archivos CSV puede ser útil en situaciones donde no se requiere una base de datos grande o compleja."

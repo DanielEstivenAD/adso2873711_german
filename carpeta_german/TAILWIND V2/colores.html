@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colores en Tailwind CSS</title>
+    <script src="js/taildwind-3.4.5.js"></script>
+    <link href="css/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Para el menú hamburguesa en pantallas pequeñas */
+        @media (min-width: 640px) {
+            #nav-menu-small {
+                display: none; /* Oculta el menú pequeño en pantallas grandes */
+            }
+        }
+
+        /* Para el menú principal en pantallas grandes */
+        @media (max-width: 640px) {
+            #nav-menu {
+                display: none; /* Oculta el menú principal en pantallas pequeñas */
+            }
+        }
+
+        .nav-menu-small {
+            flex-direction: column; /* Apilar elementos verticalmente */
+            position: absolute;
+            top: 100%; /* Justo debajo del nav */
+            left: 0;
+            right: 0;
+            background-color: #2d3748; /* Color de fondo del menú */
+            border-radius: 0 0 0.375rem 0.375rem;
+            z-index: 10;
+        }
+
+        .nav-menu-small li {
+            padding: 1rem; /* Espaciado interno para los elementos */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 p-8">
+    <!-- Encabezado común -->
+    <header class="bg-blue-700 text-white p-6 rounded-lg shadow-lg mb-8 text-center">
+        <h1 class="text-4xl font-bold">Colores en Tailwind CSS</h1>
+        <p class="mt-4 text-lg">Explora la paleta de colores de Tailwind CSS y cómo usarlos.</p>
+    </header>
+
+    <!-- Menú de navegación común -->
+    <nav class="bg-gray-800 p-4 rounded-lg mb-8 relative">
+        <div class="flex items-center justify-center">
+            <!-- Menú hamburguesa que se ve solo en pantallas pequeñas -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Menú principal que se ve solo en pantallas grandes -->
+            <ul id="nav-menu" class="flex justify-center space-x-8 text-white">
+                <li><a href="index.html" class="hover:text-blue-300">Inicio</a></li>
+                <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
+                <li><a href="interfaz.html" class="hover:text-blue-300">Interfaz</a></li>
+                <li><a href="componentes.html" class="hover:text-blue-300">Componentes</a></li>
+                <li><a href="colores.html" class="hover:text-blue-300">Colores</a></li>
+                <li><a href="dimensiones.html" class="hover:text-blue-300">Dimensiones</a></li>
+                <li><a href="propiedades.html" class="hover:text-blue-300">Propiedades</a></li>
+                <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
+            </ul>
+        </div>
+
+        <!-- Menú hamburguesa que se despliega en pantallas pequeñas -->
+        <ul id="nav-menu-small" class="nav-menu-small hidden text-white mt-4">
+            <li><a href="index.html" class="hover:text-blue-300">Inicio</a></li>
+            <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
+            <li><a href="interfaz.html" class="hover:text-blue-300">Interfaz</a></li>
+            <li><a href="componentes.html" class="hover:text-blue-300">Componentes</a></li>
+            <li><a href="colores.html" class="hover:text-blue-300">Colores</a></li>
+            <li><a href="dimensiones.html" class="hover:text-blue-300">Dimensiones</a></li>
+            <li><a href="propiedades.html" class="hover:text-blue-300">Propiedades</a></li>
+            <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal de la página de colores -->
+    <main class="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <section>
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Introducción a los Colores</h2>
+            <p class="text-gray-700 text-lg mb-4">
+                Tailwind CSS proporciona una amplia gama de colores que puedes utilizar para estilizar tus componentes.
+                A continuación, se presentan algunos ejemplos de colores y cómo usarlos en tu diseño.
+            </p>
+        </section>
+
+        <!-- Colores básicos -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Colores Básicos</h2>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-red-500 p-6 rounded-lg text-center text-white">
+                    <p>Red</p>
+                    <pre class="bg-gray-100 p-2 rounded-lg mt-2 text-gray-800"><code>class="bg-red-500"</code></pre>
+                </div>
+                <div class="bg-green-500 p-6 rounded-lg text-center text-white">
+                    <p>Green</p>
+                    <pre class="bg-gray-100 p-2 rounded-lg mt-2 text-gray-800"><code>class="bg-green-500"</code></pre>
+                </div>
+                <div class="bg-blue-500 p-6 rounded-lg text-center text-white">
+                    <p>Blue</p>
+                    <pre class="bg-gray-100 p-2 rounded-lg mt-2 text-gray-800"><code>class="bg-blue-500"</code></pre>
+                </div>
+                <div class="bg-yellow-500 p-6 rounded-lg text-center text-white">
+                    <p>Yellow</p>
+                    <pre class="bg-gray-100 p-2 rounded-lg mt-2 text-gray-800"><code>class="bg-yellow-500"</code></pre>
+                </div>
+                <div class="bg-purple-500 p-6 rounded-lg text-center text-white">
+                    <p>Purple</p>
+                    <pre class="bg-gray-100 p-2 rounded-lg mt-2 text-gray-800"><code>class="bg-purple-500"</code></pre>
+                </div>
+                <div class="bg-pink-500 p-6 rounded-lg text-center text-white">
+                    <p>Pink</p>
+                    <pre class="bg-gray-100 p-2 rounded-lg mt-2 text-gray-800"><code>class="bg-pink-500"</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Colores Neutros -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Colores Neutros</h2>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-gray-100 p-6 rounded-lg text-center">
+                    <p>Gray 100</p>
+                    <pre class="bg-gray-100 p-2 rounded-lg mt-2 text-gray-800"><code>class="bg-gray-100"</code></pre>
+                </div>
+                <div class="bg-gray-300 p-6 rounded-lg text-center">
+                    <p>Gray 300</p>
+                    <pre class="bg-gray-100 p-2 rounded-lg mt-2 text-gray-800"><code>class="bg-gray-300"</code></pre>
+                </div>
+                <div class="bg-gray-500 p-6 rounded-lg text-center">
+                    <p>Gray 500</p>
+                    <pre class="bg-gray-100 p-2 rounded-lg mt-2 text-gray-800"><code>class="bg-gray-500"</code></pre>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg text-center text-white">
+                    <p>Gray 700</p>
+                    <pre class="bg-gray-100 p-2 rounded-lg mt-2 text-gray-800"><code>class="bg-gray-700"</code></pre>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-lg text-center text-white">
+                    <p>Gray 900</p>
+                    <pre class="bg-gray-100 p-2 rounded-lg mt-2 text-gray-800"><code>class="bg-gray-900"</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Colores Personalizados -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Colores Personalizados</h2>
+            <div class="bg-blue-500 p-6 rounded-lg text-center text-white mb-4">
+                <p>Color Personalizado</p>
+                <pre class="bg-gray-100 p-2 rounded-lg mt-2 text-gray-800"><code>class="bg-[#3490dc]"</code></pre>
+            </div>
+            <div class="bg-red-400 p-6 rounded-lg text-center text-white mb-4">
+                <p>Otro Color Personalizado</p>
+                <pre class="bg-gray-100 p-2 rounded-lg mt-2 text-gray-800"><code>class="bg-[#e3342f]"</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página común -->
+    <footer class="bg-gray-800 text-white p-4 rounded-lg mt-8 text-center">
+        <p class="text-sm">Guía de Tailwind CSS - Ing: Jose Germán Estrada Clavijo</p>
+    </footer>
+</body>
+
+</html>

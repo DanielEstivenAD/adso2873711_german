@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz de Usuario en Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-8">
+    <!-- Encabezado común -->
+    <header class="bg-blue-700 text-white p-6 rounded-lg shadow-lg mb-8 text-center">
+        <h1 class="text-4xl font-bold">Interfaz de Usuario en Tailwind CSS</h1>
+        <p class="mt-4 text-lg">Explora las partes de una interfaz de usuario utilizando Tailwind CSS.</p>
+    </header>
+
+    <!-- Menú de navegación común -->
+    <nav class="bg-gray-800 p-4 rounded-lg mb-8">
+        <ul class="flex justify-center space-x-8 text-white">
+            <li><a href="index.html" class="hover:text-blue-300">Inicio</a></li>
+            <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
+            <li><a href="interfaz.html" class="hover:text-blue-300">Interfaz</a></li>
+            <li><a href="componentes.html" class="hover:text-blue-300">Componentes</a></li>
+            <li><a href="colores.html" class="hover:text-blue-300">Colores</a></li>
+            <li><a href="dimensiones.html" class="hover:text-blue-300">Dimensiones</a></li>
+            <li><a href="propiedades.html" class="hover:text-blue-300">Propiedades</a></li>
+            <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal de la página de interfaz -->
+    <main class="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <section>
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Componentes de la Interfaz</h2>
+            <p class="text-gray-700 text-lg mb-4">
+                A continuación se presentan las diferentes partes de una interfaz de usuario construida con Tailwind CSS.
+            </p>
+        </section>
+
+        <!-- Header -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Header</h2>
+            <div class="bg-blue-600 text-white p-4 rounded-lg mb-4">
+                <h3 class="text-xl font-bold">Este es el Header</h3>
+                <p>Aquí puedes colocar el título de tu aplicación y otros elementos de navegación.</p>
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg"><code>&lt;header class="bg-blue-600 text-white p-4 rounded-lg"&gt;
+    &lt;h3 class="text-xl font-bold"&gt;Este es el Header&lt;/h3&gt;
+    &lt;p&gt;Aquí puedes colocar el título de tu aplicación y otros elementos de navegación.&lt;/p&gt;
+&lt;/header&gt;</code></pre>
+        </section>
+
+        <!-- Sidebar -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Sidebar</h2>
+            <div class="bg-gray-200 p-4 rounded-lg mb-4">
+                <h3 class="font-bold">Este es el Sidebar</h3>
+                <ul>
+                    <li>Opción 1</li>
+                    <li>Opción 2</li>
+                    <li>Opción 3</li>
+                </ul>
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg"><code>&lt;aside class="bg-gray-200 p-4 rounded-lg"&gt;
+    &lt;h3 class="font-bold"&gt;Este es el Sidebar&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Opción 1&lt;/li&gt;
+        &lt;li&gt;Opción 2&lt;/li&gt;
+        &lt;li&gt;Opción 3&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+        </section>
+
+        <!-- Content -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Contenido Principal</h2>
+            <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+                <h3 class="font-bold">Este es el Contenido Principal</h3>
+                <p>Aquí puedes agregar la información principal que deseas mostrar en la interfaz.</p>
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg"><code>&lt;main class="bg-white p-4 rounded-lg shadow-md"&gt;
+    &lt;h3 class="font-bold"&gt;Este es el Contenido Principal&lt;/h3&gt;
+    &lt;p&gt;Aquí puedes agregar la información principal que deseas mostrar en la interfaz.&lt;/p&gt;
+&lt;/main&gt;</code></pre>
+        </section>
+
+        <!-- Footer -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Footer</h2>
+            <div class="bg-gray-800 text-white p-4 rounded-lg mb-4">
+                <p>Aquí puedes incluir información de contacto y derechos de autor.</p>
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg"><code>&lt;footer class="bg-gray-800 text-white p-4 rounded-lg"&gt;
+    &lt;p&gt;Aquí puedes incluir información de contacto y derechos de autor.&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+        </section>
+
+        <!-- Ejemplo Alternativo de Interfaz -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Ejemplo Alternativo de Interfaz</h2>
+            <div class="flex">
+                <div class="bg-blue-500 text-white p-4 rounded-lg w-1/4 mr-4">
+                    <h3 class="font-bold">Alternativa Sidebar</h3>
+                    <ul>
+                        <li>Alternativa 1</li>
+                        <li>Alternativa 2</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md w-3/4">
+                    <h3 class="font-bold">Alternativa Contenido</h3>
+                    <p>Aquí se puede ver otra disposición de los elementos de la interfaz.</p>
+                </div>
+            </div>
+            <pre class="bg-gray-100 p-4 rounded-lg"><code>&lt;div class="flex"&gt;
+    &lt;div class="bg-blue-500 text-white p-4 rounded-lg w-1/4 mr-4"&gt;
+        &lt;h3 class="font-bold"&gt;Alternativa Sidebar&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Alternativa 1&lt;/li&gt;
+            &lt;li&gt;Alternativa 2&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class="bg-white p-4 rounded-lg shadow-md w-3/4"&gt;
+        &lt;h3 class="font-bold"&gt;Alternativa Contenido&lt;/h3&gt;
+        &lt;p&gt;Aquí se puede ver otra disposición de los elementos de la interfaz.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </section>
+    </main>
+
+    <!-- Pie de página común -->
+    <footer class="bg-gray-800 text-white p-4 rounded-lg mt-8 text-center">
+        <p class="text-sm">Guía de Tailwind CSS - Ing: Jose Germán Estrada Clavijo</p>
+    </footer>
+</body>
+
+</html>

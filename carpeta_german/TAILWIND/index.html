@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-8">
+    <!-- Encabezado común -->
+    <header class="bg-blue-700 text-white p-6 rounded-lg shadow-lg mb-8 text-center">
+        <h1 class="text-4xl font-bold">Guía Completa de Tailwind CSS</h1>
+        <p class="mt-4 text-lg">Explora los fundamentos y avanzados del framework de diseño Tailwind CSS.</p>
+    </header>
+
+    <!-- Menú de navegación común -->
+    <nav class="bg-gray-800 p-4 rounded-lg mb-8">
+        <ul class="flex justify-center space-x-8 text-white">
+            <li><a href="index.html" class="hover:text-blue-300">Inicio</a></li>
+            <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
+            <li><a href="interfaz.html" class="hover:text-blue-300">Interfaz</a></li>
+            <li><a href="componentes.html" class="hover:text-blue-300">Componentes</a></li>
+            <li><a href="colores.html" class="hover:text-blue-300">Colores</a></li>
+            <li><a href="dimensiones.html" class="hover:text-blue-300">Dimensiones</a></li>
+            <li><a href="propiedades.html" class="hover:text-blue-300">Propiedades</a></li>
+            <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal de la página de inicio -->
+    <main class="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <section>
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">¿Qué es Tailwind CSS?</h2>
+            <p class="text-gray-700 text-lg mb-4">
+                Tailwind CSS es un framework de utilidades CSS que permite crear interfaces de usuario rápidas, consistentes y personalizadas sin la necesidad de escribir CSS desde cero. A diferencia de otros frameworks como Bootstrap, que te proporciona componentes predefinidos, Tailwind te da control total sobre el diseño a través de clases utilitarias preconfiguradas.
+            </p>
+            <p class="text-gray-700 text-lg mb-4">
+                Con Tailwind, puedes diseñar directamente en tu HTML utilizando clases como <code>bg-blue-500</code>, <code>text-xl</code>, y <code>p-4</code>. Cada clase es una regla CSS aplicada de manera precisa, lo que permite personalizar cada aspecto del diseño sin sobrescribir estilos preexistentes.
+            </p>
+        </section>
+
+        <!-- Sección de Ventajas -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Ventajas de Usar Tailwind CSS</h2>
+            <ul class="list-disc list-inside text-gray-700 text-lg">
+                <li><strong>Flexibilidad total</strong>: No estás atado a componentes predefinidos; puedes construir lo que quieras, cómo lo quieras.</li>
+                <li><strong>Control granular</strong>: Cada clase en Tailwind aplica una propiedad CSS específica, lo que te permite tener control absoluto sobre el diseño.</li>
+                <li><strong>Facilidad de personalización</strong>: Puedes personalizar rápidamente el tema, colores, y tamaños utilizando la configuración de Tailwind.</li>
+                <li><strong>Productividad</strong>: Al usar utilidades predefinidas, puedes construir interfaces más rápidamente sin preocuparte por escribir CSS repetitivo.</li>
+            </ul>
+        </section>
+
+        <!-- Sección de Características clave -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Características Clave de Tailwind CSS</h2>
+            <div class="grid grid-cols-2 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">1. Clases Utilitarias</h3>
+                    <p class="text-gray-700 text-lg">
+                        Tailwind ofrece cientos de clases utilitarias para estilizar tu contenido, como clases para márgenes (<code>m-4</code>), colores de fondo (<code>bg-blue-500</code>), tipografía (<code>text-xl</code>), y mucho más.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">2. Responsive Design</h3>
+                    <p class="text-gray-700 text-lg">
+                        Tailwind facilita el diseño responsivo gracias a sus clases de utilidades móviles como <code>sm:</code>, <code>md:</code>, <code>lg:</code> y <code>xl:</code>, que aplican estilos específicos para distintos tamaños de pantalla.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">3. Tema Personalizable</h3>
+                    <p class="text-gray-700 text-lg">
+                        Puedes modificar fácilmente el esquema de colores, fuentes, y más a través del archivo de configuración de Tailwind, permitiéndote crear temas personalizados de manera eficiente.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">4. Optimización Automática</h3>
+                    <p class="text-gray-700 text-lg">
+                        Tailwind incluye una herramienta llamada PurgeCSS que elimina el CSS no utilizado de tu proyecto, manteniendo tus archivos de estilos ligeros y optimizados para producción.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Enlaces a otras páginas -->
+        <section class="mt-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Continúa Explorando Tailwind CSS</h2>
+            <p class="text-gray-700 text-lg mb-4">
+                Aprende más sobre Tailwind CSS a través de nuestras guías específicas:
+            </p>
+            <ul class="list-disc list-inside text-lg text-blue-600">
+                <li><a href="instalacion.html" class="hover:underline">Instalación de Tailwind CSS</a></li>
+                <li><a href="interfaz.html" class="hover:underline">Interfaz y Clases Utilitarias</a></li>
+                <li><a href="componentes.html" class="hover:underline">Componentes en Tailwind CSS</a></li>
+                <li><a href="colores.html" class="hover:underline">Colores en Tailwind CSS</a></li>
+                <li><a href="dimensiones.html" class="hover:underline">Espacios y Dimensiones</a></li>
+                <li><a href="propiedades.html" class="hover:underline">Propiedades Avanzadas</a></li>
+                <li><a href="ejemplos.html" class="hover:underline">Ejemplos Completos</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Pie de página común -->
+    <footer class="bg-gray-800 text-white p-4 rounded-lg mt-8 text-center">
+        <p class="text-sm">Guía de Tailwind CSS - Ing: Jose Germán Estrada Clavijo</p>
+    </footer>
+</body>
+
+</html>
